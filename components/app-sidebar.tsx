@@ -12,7 +12,7 @@ export function AppSidebar() {
   return (
     <Sidebar>
         <SideCard icon={<Search />} name="HopeLens" subtitle="Research Tool" />
-        <SidebarContent className="bg-slate-800 pt-4">
+        <SidebarContent className="dark:bg-muted bg-slate-800 pt-4">
           <SideMenu icon={<LayoutDashboard />} routeLink={"/"} title={"Dashboard"}/>
           <SideMenu icon={<Map />} routeLink={"/mapview"} title={"Map View"}/>
           <SideMenu icon={<FolderKanban />} routeLink={"/projects"} title={"Projects"}/>

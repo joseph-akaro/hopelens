@@ -7,12 +7,14 @@ import { Update } from './dashboard/update'
 import { UpdateCard } from './update-card'
 import { ActivityCard } from './activity-card'
 import { CountryCard } from './country-card'
+import { ToggleTheme } from './theme-switcher'
 
 export const AppMain = () => {
   return (
         <div className='flex flex-col w-full h-full flex-1 gap-4'>
-          <SidebarHeader className="w-bg-background text-foreground border-b border-muted flex h-16 items-start justify-center px-4">
+          <SidebarHeader className="flex flex-row justify-between items-start w-full w-bg-background text-foreground border-b border-mute h-16 px-4">
             <SidebarTrigger />
+            <ToggleTheme />
           </SidebarHeader>
           <div className='flex flex-col items-start justify-start gap-2 px-4'>
             <h1 className='text-xl font-bold'>Dashboard</h1>
