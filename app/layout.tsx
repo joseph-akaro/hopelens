@@ -9,7 +9,7 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: "OneHope Pulse",
+  title: "HopeLens",
   description: "A dashboard for tracking and visualizing the impact of OneHope's projects in Eastern Africa.",
 };
 
