@@ -5,6 +5,8 @@ import { Globe, FolderKanban, TrendingUp } from 'lucide-react'
 import { Update } from './dashboard/update'
 
 import { UpdateCard } from './update-card'
+import { ActivityCard } from './activity-card'
+import { CountryCard } from './country-card'
 
 export const AppMain = () => {
   return (
@@ -13,8 +15,8 @@ export const AppMain = () => {
             <SidebarTrigger />
           </SidebarHeader>
           <div className='flex flex-col items-start justify-start gap-2 px-4'>
-            <h1 className='text-2xl font-bold'>Dashboard</h1>
-            <p className='text-sm text-muted-foreground'>Overview of your projects and activities</p>
+            <h1 className='text-xl font-bold'>Dashboard</h1>
+            <p className='text-sm text-muted-foreground'>Research coordination overview</p>
           </div>
           <div className='flex-1 p-4 items-center justify-center gap-4'>
             <div className="flex items-center justify-between md:flex-row flex-col gap-6 w-full">
@@ -24,8 +26,8 @@ export const AppMain = () => {
             </div>
             <div className='flex flex-col w-full items-center justify-between gap-4 mt-6 overflow-x-auto p-1'>
               <Update title="Recent Updates" component={<Updates />} />
-              <Update title="Active Projects" component={<p>New update: Project Alpha has reached its first milestone.</p>} />
-              <Update title="Participating Countries" component={<p>New update: Project Alpha has reached its first milestone.</p>} />
+              <Update title="Active Projects" component={<Activity />} />
+              <Update title="Participating Countries" component={<ParticipatingCountries />} />
             </div>
           </div>
         </div>
@@ -42,5 +44,33 @@ const Updates = () => {
       <UpdateCard title="Africa Program Evaluation" status="Approved" country="Burundi" project="Burundi GYC" timeAgo="1 hours ago" />
       <UpdateCard title="Africa Program Evaluation" status="Approved" country="Tanzania" project="African Program Evaluation" timeAgo="2 hours ago" />
     </>
+  )
+}
+
+
+const Activity = () => {
+  return(
+    < div className='grid grid-cols-2 w-full items-start justify-center gap-4 overflow-x-auto p-1'>
+      <ActivityCard title="Project Alpha has reached its first milestone." description="The team successfully completed the initial phase of data collection and analysis, providing valuable insights for the next steps." />
+      <ActivityCard title="Project Beta has been approved." description="The project proposal for Project Beta has been approved by the review committee, allowing the team to proceed with implementation." />
+      <ActivityCard title="Project Gamma is now active." description="Project Gamma has officially launched, and the team is actively working on the initial tasks outlined in the project plan." />
+      <ActivityCard title="Project Gamma is now active." description="Project Gamma has officially launched, and the team is actively working on the initial tasks outlined in the project plan." />
+    </div>
+  )
+}
+
+
+const ParticipatingCountries = () => {
+  return(
+    <div className='grid grid-cols-4 w-full items-start justify-start flex-wrap gap-4 overflow-x-auto p-1'>
+     <CountryCard country="Kenya" region="East Africa" />
+     <CountryCard country="Rwanda" region="East Africa" />
+     <CountryCard country="Burundi" region="East Africa" />
+     <CountryCard country="Tanzania" region="East Africa" />
+     <CountryCard country="Uganda" region="East Africa" />
+     <CountryCard country="Ethiopia" region="East Africa" />
+     <CountryCard country="South Sudan" region="East Africa" />
+     <CountryCard country="Horn of Africa" region="East Africa" />
+    </div>
   )
 }

@@ -12,20 +12,20 @@ interface UpdateCardProps {
 
 export const UpdateCard = ({title, status, country, project, timeAgo}: UpdateCardProps) => {
   return (
-    <Card className='flex flex-col w-full p-4 gap-2 rounded-md text-foreground hover:bg-muted transition-colors'>
-       <CardHeader>
-            <CardTitle>{title}</CardTitle>
-            <CardAction className='bg-green-50 rounded-md border border-green-500 px-2 py-1 flex items-center justify-center'>
+    <div className='flex flex-col h-sm w-full p-4 gap-1 rounded-lg border-1 text-foreground hover:bg-muted transition-colors'>
+       <div className='flex items-center justify-start gap-4'>
+            <h1 className='text-md font-semibold text-foreground'>{title}</h1>
+            <div className='bg-green-50 h-sm w-18 rounded-md border border-green-500 flex items-center justify-center'>
                 <p className='text-sm text-green-500'>{status}</p>
-            </CardAction>
-       </CardHeader>
-        <CardFooter className="gap-1 flex-row items-center justify-start text-muted-foreground">
+            </div>
+       </div>
+        <div className="flex gap-1 flex-row items-center justify-start text-muted-foreground">
             <p className='text-xs '>{country}</p>
             <Dot />
             <p className='text-xs'>{project}</p>
             <Dot />
             <p className='text-xs'>{timeAgo}</p>
-        </CardFooter>
-    </Card>
+        </div>
+    </div>
   )
 }

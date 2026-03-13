@@ -8,11 +8,11 @@ interface sideCardProps {
 
 export const SideCard = ({icon, name, subtitle }: sideCardProps) => {
   return (
-    <div className='flex flex-row w-full h-16 border-b border-muted p-4 items-start justify-start align-center gap-4 dark:bg-muted bg-sky-950'>
-        <div className='rounded-full flex items-center justify-center p-2 bg-muted'>
+    <div className='flex flex-row w-full border-b border-slate-700 px-8 py-2 items-center justify-start align-center gap-4 dark:bg-muted bg-slate-900'>
+        <div className='w-8 h-8 rounded-md flex items-center justify-center p-2 bg-muted'>
             {icon}
         </div>
-        <div className='flex flex-col items-start justify-center'>
+        <div className='flex flex-col w-sm items-start justify-center'>
             <span className='text-sm dark:text-foreground text-white font-bold'>{name}</span>
             <span className='text-xs text-muted-foreground'>{subtitle}</span>
         </div>
