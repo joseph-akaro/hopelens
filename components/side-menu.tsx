@@ -4,7 +4,7 @@
 import React from 'react'
 import  Link  from 'next/link'
 import { SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubItem } from './ui/sidebar'
-import { useSidebar } from "@/components/ui/sidebar"
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from './ui/collapsible'
 
 
 interface sideMenuProps {
@@ -18,25 +18,28 @@ export const SideMenu = ({icon, title, subItems} : sideMenuProps) => {
   return (
      <div className="flex flex-col gap-2">
         <SidebarMenuItem className='list-none p-0 m-0 w-full'>
-          <SidebarMenuButton>
-            <div className='flex flex-row items-center gap-2 text-slate-100 hover:text-slate-800 hover:bg-muted rounded-md px-4 py-2 w-full'>
-              {icon}
-              <p className='text-md'>{title}</p>
-            </div>
-          </SidebarMenuButton>
-          <SidebarMenuSub>
-            <SidebarMenuSubItem>
-              {
-                subItems?.map((item, index) => (
-                  <Link key={index} href={item.routeLink ? item.routeLink : "#"} className="w-full h-full flex items-center justify-start text-sm text-slate-200 hover:text-slate-800 hover:bg-muted rounded-md px-4 py-2">
-                    <div className="mr-2 text-xs">{item.itemIcon}</div>
-                    {item.title}
-                  </Link>
-                ))
-              }
-            </SidebarMenuSubItem>
-          </SidebarMenuSub>
-      </SidebarMenuItem>
-     </div>
-  )
-}
+          <Collapsible defaultOpen={false} className="w-full">
+            <CollapsibleTrigger className="w-full h-full">
+              <SidebarMenuButton className="w-full h-full flex items-center hover:bg-cyan-900 font-medium justify-start text-xs text-muted-foreground px-4 py-2">
+                {title}
+              </SidebarMenuButton>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <SidebarMenuSub>
+                <SidebarMenuSubItem>
+                  {
+                    subItems?.map((item, index) => (
+                      <Link key={index} href={item.routeLink ? item.routeLink : "#"} className="w-full h-full flex items-center justify-start text-slate-200 hover:bg-slate-600 rounded-md text-sm px-4 py-2">
+                        <div className="mr-2 text-xs">{item.itemIcon}</div>
+                        {item.title}
+                      </Link>
+                    ))
+                  }
+                </SidebarMenuSubItem>
+              </SidebarMenuSub>
+            </CollapsibleContent>
+          </Collapsible>
+        </SidebarMenuItem>
+      </div>
+    )
+  }
