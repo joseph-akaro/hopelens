@@ -22,7 +22,7 @@ export const AppMain = () => {
           </div>
           <div className='flex-1 p-4 items-center justify-center gap-4'>
             <div className="flex items-center justify-between md:flex-row flex-col gap-6 w-full">
-              <StatusCard title="COUNTRIES" value={8} icon={<Globe />} color={"bg-green-200"} textColor={"text-green-800"}/>
+              <StatusCard title="COUNTRIES" value={8} icon={<Globe />} color={"bg-sky-200"} textColor={"text-sky-800"}/>
               <StatusCard title="ACTIVE PROJECTS" value={2} icon={<FolderKanban />} color={"bg-sky-200"} textColor={"text-sky-800"}/>
               <StatusCard title="UPDATES (7 DAYS)" value={9} icon={<TrendingUp />} color={"bg-orange-200"} textColor={"text-orange-800"}/>
             </div>

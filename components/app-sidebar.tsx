@@ -25,16 +25,16 @@ import {
 export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader className="bg-background dark:bg-muted">
+      <SidebarHeader className="bg-background dark:bg-mist-900">
         <TopBar />
       </SidebarHeader>
 
       <SidebarContent className="text-sm bg-cyan-900 dark:bg-muted p-4">
-        <SideMenu isOpen={true} title="RESEARCH" subItems={[{ title: "Projects" , itemIcon: <FolderKanban size={18}/>}, { title: "Updates" , itemIcon: <FileChartColumnIncreasing size={18}/>}, { title: "Reports" , itemIcon: <ChartColumn size={18}/> }]} />
-        <SideMenu title="COUNTRIES" subItems={[{ title: "Country Overview" , itemIcon: <Earth size={18}/>}, { title: "Champions" , itemIcon: <Users size={18}/>}, { title: "Learning Hub" , itemIcon: <ZapIcon size={18}/> }]} />
-        <SideMenu title="COMMUNICATIONS" subItems={[{ title: "Messages" , itemIcon: <MessageSquareText size={18}/>}, { title: "Automations" , itemIcon: <BotMessageSquare size={18}/>}, { title: "Templates" , itemIcon: <FileBraces size={18}/> }]} />
-        <SideMenu title="MONITORING" subItems={[{ title: "Feeds" , itemIcon: <Activity size={18}/>}, { title: "Responses" , itemIcon: <Clock size={18}/>}, { title: "Tracker" , itemIcon: <SquareCheck size={18}/> }]} />
-        <SideMenu title="ADMINISTRATION" subItems={[{ title: "Users" , itemIcon: <User size={18}/>}, { title: "Settings" , itemIcon: <Settings size={18}/>}, { title: "System Overview" , itemIcon: <ZapIcon size={18}/> }]} />
+        <SideMenu isOpen={true} title="RESEARCH" subItems={[{ title: "Projects" , routeLink: "/projects", itemIcon: <FolderKanban size={18}/>}, { title: "Updates" , routeLink: "/updates", itemIcon: <FileChartColumnIncreasing size={18}/>}, { title: "Reports" , routeLink: "/reports", itemIcon: <ChartColumn size={18}/> }]} />
+        <SideMenu title="COUNTRIES" subItems={[{ title: "Country Overview" , routeLink: "/overview", itemIcon: <Earth size={18}/>}, { title: "Champions" , routeLink: "/champions", itemIcon: <Users size={18}/>}, { title: "Learning Hub" , routeLink: "/learning-hub", itemIcon: <ZapIcon size={18}/> }]} />
+        <SideMenu title="COMMUNICATIONS" subItems={[{ title: "Messages" , routeLink: "/messages", itemIcon: <MessageSquareText size={18}/>}, { title: "Automations" , routeLink: "/automations", itemIcon: <BotMessageSquare size={18}/>}, { title: "Templates" , routeLink: "/templates", itemIcon: <FileBraces size={18}/> }]} />
+        <SideMenu title="MONITORING" subItems={[{ title: "Feeds" , routeLink: "/monitoring/feeds", itemIcon: <Activity size={18}/>}, { title: "Responses" , routeLink: "/monitoring/responses", itemIcon: <Clock size={18}/>}, { title: "Tracker" , routeLink: "/tracker", itemIcon: <SquareCheck size={18}/> }]} />
+        <SideMenu title="ADMINISTRATION" subItems={[{ title: "Users" , routeLink: "/users", itemIcon: <User size={18}/>}, { title: "Settings" , routeLink: "/settings", itemIcon: <Settings size={18}/>}, { title: "System Overview" , routeLink: "/system-overview", itemIcon: <ZapIcon size={18}/> }]} />
       </SidebarContent>
     </Sidebar>
   )

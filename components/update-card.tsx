@@ -14,7 +14,7 @@ export const UpdateCard = ({title, status, country, project, timeAgo}: UpdateCar
   return (
     <div className='flex flex-col h-sm w-full p-4 gap-1 rounded-lg border-1 text-foreground hover:bg-muted transition-colors'>
        <div className='flex items-center justify-start gap-4'>
-            <h1 className='text-md font-semibold text-foreground'>{title}</h1>
+            <h1 className='text-md font-normal text-foreground'>{title}</h1>
             <div className='bg-green-50 h-sm w-18 rounded-md border border-green-500 flex items-center justify-center'>
                 <p className='text-sm text-green-500'>{status}</p>
             </div>
