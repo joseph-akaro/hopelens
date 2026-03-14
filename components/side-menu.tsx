@@ -19,7 +19,7 @@ export const SideMenu = ({icon, title, subItems} : sideMenuProps) => {
      <div className="flex flex-col gap-2">
         <SidebarMenuItem className='list-none p-0 m-0 w-full'>
           <SidebarMenuButton>
-            <div className='flex flex-row items-center gap-2 text-foreground hover:bg-muted rounded-md px-4 py-2 w-full'>
+            <div className='flex flex-row items-center gap-2 text-slate-100 hover:text-slate-800 hover:bg-muted rounded-md px-4 py-2 w-full'>
               {icon}
               <p className='text-md'>{title}</p>
             </div>
@@ -28,8 +28,8 @@ export const SideMenu = ({icon, title, subItems} : sideMenuProps) => {
             <SidebarMenuSubItem>
               {
                 subItems?.map((item, index) => (
-                  <Link key={index} href={item.routeLink ? item.routeLink : "#"} className="w-full h-full flex items-center justify-start text-sm text-foreground hover:bg-muted rounded-md px-4 py-2">
-                    <div className="mr-2 text-foreground text-xs">{item.itemIcon}</div>
+                  <Link key={index} href={item.routeLink ? item.routeLink : "#"} className="w-full h-full flex items-center justify-start text-sm text-slate-200 hover:text-slate-800 hover:bg-muted rounded-md px-4 py-2">
+                    <div className="mr-2 text-xs">{item.itemIcon}</div>
                     {item.title}
                   </Link>
                 ))

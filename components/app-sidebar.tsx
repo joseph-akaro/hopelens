@@ -27,11 +27,11 @@ import {
 export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader>
+      <SidebarHeader className="bg-slate-950">
         <TopBar />
       </SidebarHeader>
 
-      <SidebarContent className="text-sm">
+      <SidebarContent className="text-sm bg-sky-950 p-4">
         <SideMenu icon={<LayoutDashboard />} title="DASHBOARD" />
         <SideMenu title="RESEARCH" subItems={[{ title: "Projects" , itemIcon: <FolderKanban />}, { title: "Updates" , itemIcon: <FileChartColumnIncreasing />}, { title: "Reports" , itemIcon: <ChartColumn /> }]} />
         <SideMenu title="COUNTRIES" subItems={[{ title: "Country Overview" , itemIcon: <Earth />}, { title: "Champions" , itemIcon: <Users />}, { title: "Learning Hub" , itemIcon: <ZapIcon /> }]} />
