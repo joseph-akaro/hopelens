@@ -30,7 +30,7 @@ export function AppSidebar() {
       </SidebarHeader>
 
       <SidebarContent className="text-sm bg-cyan-900 dark:bg-muted p-4">
-        <SideMenu title="RESEARCH" subItems={[{ title: "Projects" , itemIcon: <FolderKanban size={18}/>}, { title: "Updates" , itemIcon: <FileChartColumnIncreasing size={18}/>}, { title: "Reports" , itemIcon: <ChartColumn size={18}/> }]} />
+        <SideMenu isOpen={true} title="RESEARCH" subItems={[{ title: "Projects" , itemIcon: <FolderKanban size={18}/>}, { title: "Updates" , itemIcon: <FileChartColumnIncreasing size={18}/>}, { title: "Reports" , itemIcon: <ChartColumn size={18}/> }]} />
         <SideMenu title="COUNTRIES" subItems={[{ title: "Country Overview" , itemIcon: <Earth size={18}/>}, { title: "Champions" , itemIcon: <Users size={18}/>}, { title: "Learning Hub" , itemIcon: <ZapIcon size={18}/> }]} />
         <SideMenu title="COMMUNICATIONS" subItems={[{ title: "Messages" , itemIcon: <MessageSquareText size={18}/>}, { title: "Automations" , itemIcon: <BotMessageSquare size={18}/>}, { title: "Templates" , itemIcon: <FileBraces size={18}/> }]} />
         <SideMenu title="MONITORING" subItems={[{ title: "Feeds" , itemIcon: <Activity size={18}/>}, { title: "Responses" , itemIcon: <Clock size={18}/>}, { title: "Tracker" , itemIcon: <SquareCheck size={18}/> }]} />
