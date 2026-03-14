@@ -8,7 +8,7 @@ interface ActivityCardProps {
 
 export const ActivityCard = ({ title, description }: ActivityCardProps) => {
   return (
-    <Card className='flex w-full p-4 text-foreground border-1 border-muted gap-4 rounded-md h-xsm overflow-hidden'>
+    <Card className='flex w-full md:aspect-3/1 aspect-auto p-4 text-foreground border-1 border-muted gap-4 rounded-md h-xsm overflow-hidden'>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
     </Card>

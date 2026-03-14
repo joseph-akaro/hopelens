@@ -1,13 +1,16 @@
 import React from "react"
-import { SidebarProvider } from "@/components/ui/sidebar"
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 import { AppMain } from "@/components/app-main"
+import { TopBar } from "@/components/side-card"
 
 export default function Page() {
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={true}>
       <AppSidebar />
-      <AppMain />
+      <SidebarInset>
+        <AppMain />
+      </SidebarInset>
     </SidebarProvider>
   )
 }

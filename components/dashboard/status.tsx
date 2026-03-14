@@ -17,14 +17,15 @@ interface StatusCardProps {
   value?: string | number;
   icon?: React.ReactNode;
   color?: string;
+  textColor?: string;
 }
 
-export function StatusCard({ title, value, icon, color }: StatusCardProps) {
+export function StatusCard({ title, value, icon, color, textColor }: StatusCardProps) {
   return (
-    <Card className="w-full max-w-sm max-h-38 text-foreground">
+    <Card className="w-full max-h-38 text-foreground, hover:bg-muted transition-colors">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
-        <CardAction className={`w-8 h-8 ${color} dark:bg-muted rounded-sm flex items-center justify-center`}>
+        <CardAction className={`w-8 h-8 ${color} dark:invert ${textColor} dark:invert rounded-sm flex items-center justify-center`}>
           {icon}
         </CardAction>
       </CardHeader>

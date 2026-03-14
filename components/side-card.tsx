@@ -1,21 +1,18 @@
-import Image from 'next/image'
+import { SidebarHeader } from "@/components/ui/sidebar"
+import { Globe } from "lucide-react"
 
-interface sideCardProps {
-  icon: React.ReactNode;
-  name: string;
-  subtitle: string;
-}
-
-export const SideCard = ({icon, name, subtitle }: sideCardProps) => {
+export function TopBar() {
   return (
-    <div className='flex flex-row w-full border-b border-slate-700 px-8 py-2 items-center justify-start align-center gap-4 dark:bg-muted bg-slate-900'>
-        <div className='w-8 h-8 rounded-md flex items-center justify-center p-2 dakr:bg-muted bg-slate-700 text-foreground text-slate-100'>
-            {icon}
+    <SidebarHeader className="flex h-15 items-center justify-center border-b border-muted">
+      <div className="flex flex-row text-sm items-center justify-center gap-2 w-full">
+        <span className="mr-2 p-2 rounded-md bg-blue-800 dark:invert">
+          <Globe className="h-5 w-5 text-slate-100 " />
+        </span>
+        <div>
+            <p className="text-md font-semibold tracking-tight">HopeLens</p>
+            <p className="text-xs text-muted-foreground">Research Tool</p>
         </div>
-        <div className='flex flex-col w-sm items-start justify-center'>
-            <span className='text-sm dark:text-foreground text-white font-bold'>{name}</span>
-            <span className='text-xs text-muted-foreground'>{subtitle}</span>
-        </div>
-    </div>
+      </div>
+    </SidebarHeader>
   )
 }

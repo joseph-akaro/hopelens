@@ -19,7 +19,7 @@ export const UpdateCard = ({title, status, country, project, timeAgo}: UpdateCar
                 <p className='text-sm text-green-500'>{status}</p>
             </div>
        </div>
-        <div className="flex gap-1 flex-row items-center justify-start text-muted-foreground">
+        <div className="flex w-full sm:gap-1 sm:text-sm text-xs flex-row items-center justify-start text-muted-foreground">
             <p className='text-xs '>{country}</p>
             <Dot />
             <p className='text-xs'>{project}</p>

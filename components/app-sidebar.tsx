@@ -1,23 +1,43 @@
 import {
   Sidebar,
   SidebarContent,
-  SidebarGroup,
+  SidebarHeader,
+  SidebarFooter,
 } from "@/components/ui/sidebar"
-import { LayoutDashboard, Search, Map, FolderKanban, ChartColumnBig } from "lucide-react"
-
-import { SideCard }  from "@/components/side-card"
-import { SideMenu } from "@/components/side-menu"
+import { TopBar } from "@/components/side-card"
+import { SideMenu } from "./side-menu"
+import {
+  LayoutDashboard,
+  FolderKanban,
+  FileChartColumnIncreasing, 
+  ChartColumn,
+  Earth,
+  Users,
+  Settings,
+  ZapIcon,
+  User,
+  Activity,
+  Clock,
+  SquareCheck,
+  BotMessageSquare,
+  MessageSquareText,
+  FileBraces
+} from "lucide-react"
 
 export function AppSidebar() {
   return (
-    <Sidebar>
-        <SideCard icon={<Search />} name="HopeLens" subtitle="Research Tool" />
-        <SidebarContent className="dark:bg-muted bg-slate-800 pt-4">
-          <SideMenu icon={<LayoutDashboard />} routeLink={"/"} title={"Dashboard"}/>
-          <SideMenu icon={<Map />} routeLink={"/mapview"} title={"Map View"}/>
-          <SideMenu icon={<FolderKanban />} routeLink={"/projects"} title={"Projects"}/>
-          <SideMenu icon={<ChartColumnBig />} routeLink={"/updates"} title={"Updates"}/>
-        <SidebarGroup />
+    <Sidebar collapsible="icon">
+      <SidebarHeader>
+        <TopBar />
+      </SidebarHeader>
+
+      <SidebarContent className="text-sm">
+        <SideMenu icon={<LayoutDashboard />} title="DASHBOARD" />
+        <SideMenu title="RESEARCH" subItems={[{ title: "Projects" , itemIcon: <FolderKanban />}, { title: "Updates" , itemIcon: <FileChartColumnIncreasing />}, { title: "Reports" , itemIcon: <ChartColumn /> }]} />
+        <SideMenu title="COUNTRIES" subItems={[{ title: "Country Overview" , itemIcon: <Earth />}, { title: "Champions" , itemIcon: <Users />}, { title: "Learning Hub" , itemIcon: <ZapIcon /> }]} />
+        <SideMenu title="COMMUNICATIONS" subItems={[{ title: "Messages" , itemIcon: <MessageSquareText />}, { title: "WhatsApp Automations" , itemIcon: <BotMessageSquare />}, { title: "Message Templates" , itemIcon: <FileBraces /> }]} />
+        <SideMenu title="MONITORING" subItems={[{ title: "Activity Feeds" , itemIcon: <Activity />}, { title: "Delayed Responses" , itemIcon: <Clock />}, { title: "Response Tracker" , itemIcon: <SquareCheck /> }]} />
+        <SideMenu title="ADMINISTRATION" subItems={[{ title: "Users" , itemIcon: <User />}, { title: "Settings" , itemIcon: <Settings />}, { title: "System Overview" , itemIcon: <ZapIcon /> }]} />
       </SidebarContent>
     </Sidebar>
   )
