@@ -1,14 +1,14 @@
 import React from "react"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
-import { Projects } from "@/components/project/projects"
+import { Updates } from "@/components/updates/updates"
 
 export default function Page() {
   return (
     <SidebarProvider defaultOpen={true}>
       <AppSidebar />
       <SidebarInset>
-        <Projects />
+        <Updates />
       </SidebarInset>
     </SidebarProvider>
   )

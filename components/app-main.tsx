@@ -1,30 +1,22 @@
 import React from 'react'
-import { SidebarHeader, SidebarTrigger } from './ui/sidebar'
 import { StatusCard } from './dashboard/status'
-import { Globe, FolderKanban, TrendingUp } from 'lucide-react'
+import { Globe, FolderKanban, TrendingUp, Users } from 'lucide-react'
 import { Update } from './dashboard/update'
 
 import { UpdateCard } from './update-card'
 import { ActivityCard } from './activity-card'
 import { CountryCard } from './country-card'
-import { ToggleTheme } from './theme-switcher'
+
 
 export const AppMain = () => {
   return (
         <div className='flex flex-col w-full h-full flex-1 gap-4'>
-          <SidebarHeader className="flex flex-row items-start md:justify-end justify-between w-full w-bg-background text-foreground border-b border-mute h-16 px-4">
-            <SidebarTrigger className="md:hidden mt-2 items-self-center" />
-            <ToggleTheme />
-          </SidebarHeader>
-          <div className='flex flex-col items-start justify-start gap-2 px-4'>
-            <h1 className='text-xl font-bold dark:text-sky-700 text-slate-600'>Dashboard</h1>
-            <p className='text-sm text-muted-foreground'>Research coordination overview</p>
-          </div>
           <div className='flex-1 p-4 items-center justify-center gap-4'>
             <div className="flex items-center justify-between md:flex-row flex-col gap-6 w-full">
-              <StatusCard title="COUNTRIES" value={8} icon={<Globe />} color={"bg-sky-200"} textColor={"text-sky-800"}/>
-              <StatusCard title="ACTIVE PROJECTS" value={2} icon={<FolderKanban />} color={"bg-sky-200"} textColor={"text-sky-800"}/>
-              <StatusCard title="UPDATES (7 DAYS)" value={9} icon={<TrendingUp />} color={"bg-orange-200"} textColor={"text-orange-800"}/>
+              <StatusCard title="COUNTRIES" value={8} icon={<Globe size={18}/>} color={"bg-blue-100"} textColor={"text-blue-900"}/>
+              <StatusCard title="CHAMPIONS" value={2} icon={<Users size={18}/>} color={"bg-green-100"} textColor={"text-green-900"}/>
+              <StatusCard title="ACTIVE PROJECTS" value={9} icon={<FolderKanban size={18}/>} color={"bg-blue-100"} textColor={"text-blue-900"}/>
+              <StatusCard title="PENDING UPDATES" value={50} icon={<TrendingUp size={18} />} color={"bg-orange-200"} textColor={"text-orange-800"} />
             </div>
             <div className='flex flex-col w-full items-center justify-between gap-4 mt-6 overflow-x-auto p-1'>
               <Update title="Recent Updates" component={<Updates />} />
