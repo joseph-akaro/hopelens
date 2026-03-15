@@ -13,15 +13,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { FolderPlus } from "lucide-react"
 import { Textarea } from "./ui/textarea"
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+import { SelectBox } from "./selectbox"
 
 
 interface DialogFormProps {
@@ -68,7 +60,7 @@ export function ProjectDialog({ buttonTitle, buttonvisibility }: DialogFormProps
             </Field>
             <Field>
               <Label htmlFor="image">Status</Label>
-              <SelectStatus />
+              <SelectBox />
             </Field>
             <Field>
               <Label htmlFor="image">Cover Image</Label>
@@ -92,20 +84,8 @@ export function ProjectDialog({ buttonTitle, buttonvisibility }: DialogFormProps
 }
 
 
-const  SelectStatus = () => {
-  return (
-    <Select>
-      <SelectTrigger className="w-full">
-        <SelectValue placeholder="Draft" />
-      </SelectTrigger>
-      <SelectContent side="top">
-        <SelectGroup>
-          <SelectLabel>Status</SelectLabel>
-          <SelectItem value="Draft">Draft</SelectItem>
-          <SelectItem value="Active">Active</SelectItem>
-          <SelectItem value="Completed">Completed</SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-  )
-}
+const items = [
+  { option: "Draft"},
+  { option: "Active"},
+  { option: "Completed"}
+]
