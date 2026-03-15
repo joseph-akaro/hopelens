@@ -1,11 +1,8 @@
 "use client"
 import React from 'react'
-import { Button } from './ui/button'
 import { SidebarHeader, SidebarTrigger } from './ui/sidebar'
 import { ToggleTheme } from './theme-switcher'
 import { usePathname } from 'next/navigation'
-import { FolderPlus } from 'lucide-react'
-import { Dialog } from '@base-ui/react'
 import { ProjectDialog } from './projectDialog'
 
 interface DashHeaderProps {
@@ -14,7 +11,7 @@ interface DashHeaderProps {
     buttonvisibility?: boolean;
 }
 
-export const DashHeader = ({ description, buttonTitle, buttonvisibility }: DashHeaderProps) => {
+export const DashHeader = ({ description, buttonvisibility }: DashHeaderProps) => {
     const pathname = usePathname()
     const title = pathname.split('/')[1].charAt(0).toUpperCase() + pathname.split('/')[1].slice(1) || 'Dashboard'
   return (

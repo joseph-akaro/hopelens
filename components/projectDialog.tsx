@@ -82,10 +82,3 @@ export function ProjectDialog({ buttonTitle, buttonvisibility }: DialogFormProps
     </Dialog>
   )
 }
-
-
-const items = [
-  { option: "Draft"},
-  { option: "Active"},
-  { option: "Completed"}
-]
