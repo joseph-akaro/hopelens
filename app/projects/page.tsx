@@ -1,14 +1,14 @@
 import React from "react"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
-import { Projects } from "@/components/project/projects"
+import { SubDashboard } from "@/components/shared/subDashboard"
 
 export default function Page() {
   return (
     <SidebarProvider defaultOpen={true}>
       <AppSidebar />
       <SidebarInset>
-        <Projects />
+        <SubDashboard description="Manages Projects within the region" buttonOn={true}/>
       </SidebarInset>
     </SidebarProvider>
   )

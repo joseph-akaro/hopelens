@@ -10,7 +10,7 @@ interface searchboxProps {
 
 export function SearchBox({ placeholder, label} : searchboxProps) {
   return (
-    <ButtonGroup className="max-w-sm w-xs">
+    <ButtonGroup className="max-w-sm w-xs focus:border-blue-700">
       <Button variant="outline" aria-label={label}>
         <SearchIcon />
       </Button>

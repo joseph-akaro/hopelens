@@ -6,9 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'avatar.vercel.sh', // Replace with your image domain
-        port: '',
-        pathname: '/**',
+        hostname: 'unsplash.com', // Replace with your image domain
       },
     ],
   },

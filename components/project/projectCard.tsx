@@ -16,14 +16,12 @@ interface projectCardProps{
     description: string
     countries: string | "0 Country";
     date: string;
+    imagePath?: string;
 }
 
-export function ProjectCard( {title, status, description, countries, date} : projectCardProps) {
+export function ProjectCard( {title, status, description, countries, date, imagePath} : projectCardProps) {
   return (
-    <Card className="flex flex-col gap-2 w-sm max-h-sm aspect-3/2 p-4 bg-slate-50 rounded-md border border-muted hover:border-blue-300">
-        <div className=" flex bg-slate-200 rounded-md h-30 items-center justify-center">
-            <h1>Image box here</h1>
-        </div>
+    <Card className="gap-2 w-xs max-h-sm aspect-3/2 p-4 bg-slate-50 rounded-md border border-muted hover:border-blue-300">
         <CardHeader>
             <CardTitle>{title}</CardTitle>
             <CardAction>{status}</CardAction>
@@ -31,9 +29,9 @@ export function ProjectCard( {title, status, description, countries, date} : pro
         <CardContent>
            <CardDescription>{description}</CardDescription>
         </CardContent>
-        <CardFooter className="flex flex-row justify-between">
-            <span>{countries}</span>
-            <span>{date}</span>
+        <CardFooter className="flex flex-row justify-between m-0">
+            <p>{countries}</p>
+            <p>{date}</p>
         </CardFooter>
     </Card>
   )
