@@ -24,7 +24,7 @@ export const SubDashboard = ({description, buttonOn} : SubDashboardProps) => {
         </TabsList>
         </div>
         <TabsContent value={"all"}>
-          <div className='grid grid-cols-3 gap-4 items-start justify-center pt-2'>
+          <div className='grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 items-start justify-center pt-2'>
             <ProjectCard />
             <ProjectCard />
             <ProjectCard />

@@ -13,7 +13,7 @@ import { Pen, Trash2 } from "lucide-react"
 
 export function ProjectCard() {
   return (
-    <Card className="relative mx-auto w-sm max-w-xs pt-0">
+    <Card className="relative m-auto w-sm max-w-xs pt-0">
       <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
       <img
         src="https://unsplash.com/photos/people-gathering-in-a-event-CjMwAu4-OqY"
