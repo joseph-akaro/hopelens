@@ -25,10 +25,10 @@ export function ProjectDialog({ buttonTitle, buttonvisibility }: DialogFormProps
   return (
     <Dialog>
       <form>
-        <DialogTrigger>
+        <DialogTrigger >
           <div className='ml-auto flex items-center gap-4'>
                 {buttonvisibility && (
-                    <Button 
+                    <Button
                         variant="outline" size="sm"
                         className={"bg-blue-700 p-2 flex flex-row gap-2 text-slate-50 hover:text-slate-50 hover:bg-blue-800 cursor-pointer"}
                         >

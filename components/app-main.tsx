@@ -10,7 +10,6 @@ import { LocationCard } from './shared/locationCard'
 import LineCharts from './charts/lineChart'
 import BarCharts from './charts/barChart'
 import PieCharts from './charts/pieChart'
-import { ChartCard } from './shared/chartCard'
 
 
 export const AppMain = () => {
@@ -24,10 +23,10 @@ export const AppMain = () => {
               <StatusCard title="PENDING UPDATES" value={50} icon={<TrendingUp size={18} />} color={"bg-orange-200"} textColor={"text-orange-800"} />
             </div>
             <div className='flex flex-col w-full items-center justify-between gap-4 mt-6 overflow-x-auto p-1'>
-              <div className='grid sm:grid-cols-3 grid-cols-1 w-full gap-2'>
-                  <LineChartUpdates />
-                  <BarChatUpdates />
-                  <RadarChatUpdates />
+              <BarCharts />
+              <div className='grid sm:grid-cols-1 md:grid-cols-2 w-full gap-2'>
+                  <LineCharts />
+                  <PieCharts />
               </div>
               <Update title='Country & Region Management' component={<Country  />} buttonOn={true} buttonTitle='Country' />
               <Update title="Recent Updates" component={<Updates />} buttonOn={"hidden"}/>
@@ -92,24 +91,5 @@ const Country = () => {
         <LocationCard title={"Tanzania"} description='Eastern Africa' iconColor={"text-green-500"} icon={<LucideBellDot size={18}/>}/>
           <LocationCard title={"Horn of Africa"} description='Eastern Africa' iconColor={"text-green-500"} icon={<LucideBellDot size={18}/>}/>
     </div>
-  )
-}
-
-
-const LineChartUpdates = () => {
-  return(
-    <ChartCard  title="Updates Over Time" component={<LineCharts />} />
-  )
-}
-
-const BarChatUpdates = () => {
-  return(
-    <ChartCard title='Projects by Country' component={<BarCharts />} />
-  )
-}
-
-const RadarChatUpdates = () => {
-  return(
-    <ChartCard title='Country Participation' component={<PieCharts />} />
   )
 }

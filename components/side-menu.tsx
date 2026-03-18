@@ -8,18 +8,16 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from './ui/collap
 
 
 interface sideMenuProps {
-    icon?: React.ReactNode;
     title?: string | null;
-    isOpen?: boolean;
     subItems?: { title: string; routeLink?: string; itemIcon?: React.ReactNode }[];
 }
 
-export const SideMenu = ({icon, title, isOpen, subItems} : sideMenuProps) => {
+export const SideMenu = ({title, subItems} : sideMenuProps) => {
 
   return (
      <div className="flex flex-col gap-2">
         <SidebarMenuItem className='list-none p-0 m-0 w-full'>
-          <Collapsible defaultOpen={isOpen || false} className="w-full">
+          <Collapsible defaultOpen={true} className="w-full">
             <CollapsibleTrigger className="w-full h-full flex items-center hover:bg-slate-950 dark:hover:bg-muted font-medium justify-start text-xs text-muted-foreground px-4 py-2 cursor-pointer">
                 {title}
             </CollapsibleTrigger>

@@ -1,33 +1,91 @@
 "use client"
-import { Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 
-const data = [
-  { Month: 'Jan', updates: 0 },
-  { Month: 'Feb', updates: 5 },
-  { Month: 'Mar', updates: 10 },
-  { Month: 'Apr', updates: 27 },
-  { Month: 'May', updates: 18 },
-  { Month: 'Jun', updates: 23 },
-  { Month: 'Jul', updates: 34 },
-  { Month: 'Aug', updates: 34 },
-  { Month: 'Sept', updates: 49 },
-  { Month: 'Oct', updates: 10 },
-  { Month: 'Nov', updates: 30 },
-  { Month: 'Dec', updates: 50 },
-];
+import { TrendingUp } from "lucide-react"
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
-export default function LineChats() {
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import {
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from "@/components/ui/chart"
+
+export const description = "A stacked bar chart with a legend"
+
+const chartData = [
+  { country: "SSD", completed: 186, droped: 80 },
+  { country: "KE", completed: 305, droped: 200 },
+  { country: "UG", completed: 237, droped: 120 },
+  { country: "TZ", completed: 73, droped: 190 },
+  { country: "BR", completed: 209, droped: 130 },
+  { country: "RW", completed: 214, droped: 140 },
+  { country: "ETH", completed: 214, droped: 140 },
+  { country: "HA", completed: 214, droped: 140 },
+]
+
+const chartConfig = {
+  completed: {
+    label: "Completed",
+    color: "var(--chart-1)",
+  },
+  droped: {
+    label: "Droped",
+    color: "var(--chart-2)",
+  },
+} satisfies ChartConfig
+
+export default function LineCharts() {
   return (
-      <AreaChart
-        style={{ width: '100%', maxHeight: "300", maxWidth: "auto",  height: 300 }}
-        responsive
-        data={data}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="Month" />
-        <YAxis width={"auto"} />
-        <Tooltip />
-        <Area type="monotoneX" dataKey="updates" stroke="#0000FF" fill='#0000ff' />
-      </AreaChart>
-  );
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-muted-foreground">Projects by Country</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ChartContainer config={chartConfig}>
+          <BarChart accessibilityLayer data={chartData}>
+            <CartesianGrid vertical={false} />
+            <XAxis
+              dataKey="country"
+              tickLine={false}
+              tickMargin={10}
+              axisLine={false}
+              tickFormatter={(value) => value.slice(0, 3)}
+            />
+            <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+            <ChartLegend content={<ChartLegendContent />} />
+            <Bar
+              dataKey="completed"
+              stackId="a"
+              fill="var(--color-completed)"
+              radius={[0, 0, 4, 4]}
+            />
+            <Bar
+              dataKey="droped"
+              stackId="a"
+              fill="var(--color-droped)"
+              radius={[4, 4, 0, 0]}
+            />
+          </BarChart>
+        </ChartContainer>
+      </CardContent>
+      <CardFooter className="flex-col items-start gap-2 text-sm">
+        <div className="flex gap-2 leading-none font-medium">
+          Trending up by 5.2% this country <TrendingUp className="h-4 w-4" />
+        </div>
+        <div className="leading-none text-muted-foreground">
+          Showing total Project By Country for the last 6 months
+        </div>
+      </CardFooter>
+    </Card>
+  )
 }
