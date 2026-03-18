@@ -7,10 +7,10 @@ import { type PieSectorDataItem } from "recharts/types/polar/Pie"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+
 import {
   ChartContainer,
   ChartStyle,
@@ -18,6 +18,7 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/components/ui/chart"
+
 import {
   Select,
   SelectContent,
@@ -26,69 +27,148 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-export const description = "An interactive pie chart"
+// -------------------- TYPES --------------------
+type StatusType = "active" | "slow" | "ideal"
 
-const desktopData = [
-  { status: "active", responses: 5, fill: "var(--color-active)" },
-  { status: "slow", responses: 2, fill: "var(--color-slow)" },
-  { status: "ideal", responses: 1, fill: "var(--color-ideal)" },
-]
+type StatusData = {
+  status: StatusType
+  responses: number
+  fill: string // ✅ add this
+}
 
+// -------------------- CONFIG --------------------
 const chartConfig = {
-  status1: {
-    label: "Active",
-  },
-  status2: {
-    label: "Slow",
-  },
-  status3: {
-    label: "Inactive",
-  },
   active: {
     label: "Active",
-    color: "var(--chart-3)",
+    color: "#22c55e",
   },
   slow: {
     label: "Slow",
-    color: "var(--chart-2)",
+    color: "#f97316",
   },
   ideal: {
     label: "Ideal",
-    color: "var(--chart-1)",
-  }
+    color: "#9ca3af",
+  },
 } satisfies ChartConfig
 
+// -------------------- NORMALIZER --------------------
+const normalizeData = (apiData: any[]): StatusData[] => {
+  const defaultStatuses: StatusType[] = ["active", "slow", "ideal"]
+
+  const colors = {
+    active: "#22c55e", // green
+    slow: "#f97316",   // orange
+    ideal: "#9ca3af",  // gray
+  }
+
+  return defaultStatuses.map((status) => {
+    const found = apiData.find((d) => d.status === status)
+
+    return {
+      status,
+      responses: found?.responses ?? 0,
+      fill: colors[status], // ✅ key fix
+    }
+  })
+}
+
+// -------------------- COMPONENT --------------------
 export default function PieCharts() {
   const id = "pie-interactive"
-  const [activeMonth, setActiveMonth] = React.useState(desktopData[0].status)
 
+  const [data, setData] = React.useState<StatusData[]>([])
+  const [loading, setLoading] = React.useState(true)
+  const [error, setError] = React.useState<string | null>(null)
+
+  const [activeStatus, setActiveStatus] = React.useState<StatusType>("active")
+
+  // -------------------- FETCH DATA --------------------
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/responses")
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch data")
+        }
+
+        const result = await res.json()
+        setData(normalizeData(result))
+      } catch (err: any) {
+        setError(err.message || "Something went wrong")
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  // -------------------- DERIVED --------------------
   const activeIndex = React.useMemo(
-    () => desktopData.findIndex((item) => item.status === activeMonth),
-    [activeMonth]
+    () => data.findIndex((item) => item.status === activeStatus),
+    [data, activeStatus]
   )
-  const months = React.useMemo(() => desktopData.map((item) => item.status), [])
 
+  const statuses = React.useMemo(
+    () => data.map((item) => item.status),
+    [data]
+  )
+
+  const activeItem = data[activeIndex] ?? data[0]
+
+  // -------------------- STATES --------------------
+  if (loading) {
+    return (
+      <div className="p-4 text-sm text-muted-foreground">
+        Loading chart...
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="p-4 text-sm text-red-500">
+        {error}
+      </div>
+    )
+  }
+
+  if (!data.length) {
+    return (
+      <div className="p-4 text-sm text-muted-foreground">
+        No data available
+      </div>
+    )
+  }
+
+  // -------------------- UI --------------------
   return (
     <Card data-chart={id} className="flex flex-col">
       <ChartStyle id={id} config={chartConfig} />
+
       <CardHeader className="flex-row items-start space-y-0 pb-0">
         <div className="grid gap-1">
-          <CardTitle className="text-muted-foreground">Response Tracker</CardTitle>
+          <CardTitle className="text-muted-foreground">
+            Response Tracker
+          </CardTitle>
         </div>
-        <Select value={activeMonth} onValueChange={setActiveMonth}>
+
+        {/* SELECT */}
+        <Select value={activeStatus} onValueChange={(val) => setActiveStatus(val as StatusType)}>
           <SelectTrigger
             className="ml-auto h-7 w-[130px] rounded-lg pl-2.5"
-            aria-label="Select a value"
+            aria-label="Select status"
           >
             <SelectValue placeholder="Select status" />
           </SelectTrigger>
-          <SelectContent align="end" className="rounded-xl">
-            {months.map((key) => {
-              const config = chartConfig[key as keyof typeof chartConfig]
 
-              if (!config) {
-                return null
-              }
+          <SelectContent align="end" className="rounded-xl">
+            {statuses.map((key) => {
+              const config = chartConfig[key]
+
+              if (!config) return null
 
               return (
                 <SelectItem
@@ -100,10 +180,10 @@ export default function PieCharts() {
                     <span
                       className="flex h-3 w-3 shrink-0 rounded-xs"
                       style={{
-                        backgroundColor: `var(--color-${key})`,
+                        backgroundColor: config.color,
                       }}
                     />
-                    {config?.label}
+                    {config.label}
                   </div>
                 </SelectItem>
               )
@@ -111,6 +191,8 @@ export default function PieCharts() {
           </SelectContent>
         </Select>
       </CardHeader>
+
+      {/* CHART */}
       <CardContent className="flex flex-1 justify-center pb-0">
         <ChartContainer
           id={id}
@@ -122,8 +204,9 @@ export default function PieCharts() {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
+
             <Pie
-              data={desktopData}
+              data={data}
               dataKey="responses"
               nameKey="status"
               innerRadius={60}
@@ -143,6 +226,7 @@ export default function PieCharts() {
                 </g>
               )}
             >
+              {/* CENTER LABEL */}
               <Label
                 content={({ viewBox }) => {
                   if (viewBox && "cx" in viewBox && "cy" in viewBox) {
@@ -158,18 +242,20 @@ export default function PieCharts() {
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold"
                         >
-                          {desktopData[activeIndex].responses.toLocaleString()}
+                          {activeItem?.responses?.toLocaleString?.() ?? 0}
                         </tspan>
+
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
                           className="fill-muted-foreground"
                         >
-                          Visitors
+                          Responses
                         </tspan>
                       </text>
                     )
                   }
+                  return null
                 }}
               />
             </Pie>
