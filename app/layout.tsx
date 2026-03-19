@@ -1,4 +1,3 @@
-import { authClient } from '@/lib/auth/client'; 
 import { NeonAuthUIProvider } from '@neondatabase/auth/react';
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
@@ -21,6 +20,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const authclient = getAuthClient();
+
   return (
     < html lang="en" suppressHydrationWarning={true} className={roboto.className} >
      <head />
@@ -32,7 +33,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
           <NeonAuthUIProvider
-            authClient={authClient} 
+            authClient={authclient} 
             redirectTo="/"
             emailOTP={true}
             social={{ providers: ['google']  }} 
