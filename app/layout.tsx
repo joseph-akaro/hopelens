@@ -1,3 +1,5 @@
+import { authClient } from '@/lib/auth/client'; 
+import { NeonAuthUIProvider } from '@neondatabase/auth/react';
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
@@ -29,7 +31,16 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+          <NeonAuthUIProvider
+            authClient={authClient} 
+            redirectTo="/"
+            emailOTP={true}
+            social={{ providers: ['google']  }} 
+            credentials={{ forgotPassword: true }} 
+            organization
+          >
+           {children}
+          </NeonAuthUIProvider>
           </ThemeProvider>
         </body>
         <Analytics />
