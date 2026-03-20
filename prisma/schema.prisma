@@ -1,11 +1,125 @@
-// Prims Schema for HopeLens
-
 generator client {
   provider = "prisma-client"
-  output   = "../app/generated/prisma"
+  output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+// ENUMS
+enum ProjectStatus {
+  draft
+  active
+  completed
+}
+
+enum UpdateStatus {
+  pending
+  approved
+  rejected
+}
+
+enum ChampionRole {
+  partner
+  champion
+  admin
+}
+
+/// MODELS
+
+model Country {
+  id          String   @id @default(uuid())
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+  createdBy   String?
+
+  name   String
+  region String
+
+  // ✅ One-to-one Champion
+  champion Champion?
+
+  contactEmail String?
+  contactPhone String?
+
+  lastUpdateDate DateTime?
+
+  updates Update[]
+
+  @@index([region])
+}
+
+model Champion {
+  id String @id @default(uuid())
+
+  // 🔥 Link to Neon Auth user
+  authUserId String @unique
+
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+
+  name  String
+  email String  @unique
+  phone String?
+
+  countryId String  @unique
+  country   Country @relation(fields: [countryId], references: [id])
+
+  role ChampionRole @default(champion)
+
+  lastActivityDate DateTime?
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+  createdBy   String?
+
+  title            String
+  description      String?
+  shortDescription String?
+  imageUrl         String?
+
+  status ProjectStatus @default(draft)
+
+  author String?
+
+  // PostgreSQL array
+  countries String[]
+
+  // Relations
+  updates Update[]
+
+  @@index([status])
+}
+
+model Update {
+  id          String   @id @default(uuid())
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+  createdBy   String?
+
+  projectId String?
+  project   Project? @relation(fields: [projectId], references: [id])
+
+  projectTitle String?
+
+  countryId String?
+  country   Country? @relation(fields: [countryId], references: [id])
+
+  countryName String?
+
+  title String
+  body  String?
+
+  status UpdateStatus @default(pending)
+
+  author String?
+
+  attachments String[]
+
+  @@index([createdDate(sort: Desc)])
 }
