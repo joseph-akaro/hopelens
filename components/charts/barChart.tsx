@@ -71,7 +71,6 @@ const chartData = [
   { date: "2024-05-19", updates: 235,  },
   { date: "2024-05-20", updates: 177,  },
   { date: "2024-05-21", updates: 82,  },
-  { date: "2024-05-22", updates: 81,  },
   { date: "2024-05-23", updates: 252,  },
   { date: "2024-05-24", updates: 294,  },
   { date: "2024-05-25", updates: 201,  },
