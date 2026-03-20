@@ -1,0 +1,41 @@
+name: Branch Sync CI/CD
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches:
+      - dev
+      - test
+
+jobs:
+  sync-branches:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Important for full git history
+
+      - name: Set up Git
+        run: |
+          git config user.name "Joseph Akaro"
+          git config user.email "josephmmakaro@gmail.com"
+
+      - name: Merge dev -> test
+        if: github.ref == 'refs/heads/dev'
+        run: |
+          git checkout test
+          git pull origin test
+          git merge dev --no-edit
+          git push origin test
+
+      - name: Merge test -> prod
+        if: github.ref == 'refs/heads/test'
+        run: |
+          git checkout prod
+          git pull origin prod
+          git merge test --no-edit
+          git push origin prod
