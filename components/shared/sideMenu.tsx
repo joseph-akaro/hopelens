@@ -3,8 +3,8 @@
 
 import React from 'react'
 import  Link  from 'next/link'
-import { SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubItem } from './ui/sidebar'
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from './ui/collapsible'
+import { SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubItem } from '../ui/sidebar'
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '../ui/collapsible'
 
 
 interface sideMenuProps {

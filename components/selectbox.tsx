@@ -7,7 +7,11 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-export const  SelectBox = () => {
+interface selectboxProps {
+  items: string[];
+}
+
+export const  SelectBox = ({...props} : selectboxProps) => {
 
   return (
     <Select>
@@ -15,11 +19,13 @@ export const  SelectBox = () => {
         <SelectValue placeholder="Draft" />
       </SelectTrigger>
       <SelectContent side="top">
-        <SelectGroup>
-            <SelectItem value={"Draft"}>Draft</SelectItem>
-            <SelectItem value={"Active"}>Active</SelectItem>
-            <SelectItem value={"Completed"}>Completed</SelectItem>
-        </SelectGroup>
+        {
+          props.items.map((item) => (
+            <SelectGroup key={item}>
+              <SelectItem value={item}>{item}</SelectItem>
+            </SelectGroup>
+          ))
+        }
       </SelectContent>
     </Select>
   )

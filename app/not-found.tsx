@@ -12,7 +12,7 @@ export default function NotFound() {
         {/* Icon / Illustration */}
         <div className="mb-6 flex justify-center">
           <div className="flex h-20 w-20 items-center justify-center rounded-full bg-blue-100 text-blue-600 text-3xl font-bold shadow-sm">
-           <img src="/logo.png" alt="HopeLens" className="h-16" />
+           <Image src="/p" alt="HopeLens" className="h-16" />
           </div>
         </div>
 

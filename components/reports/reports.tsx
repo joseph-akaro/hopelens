@@ -1,5 +1,5 @@
 import React from 'react'
-import { DashHeader } from '../dash-header'
+import { DashHeader } from '../shared/subHeader'
 
 export const Reports = () => {
   return (

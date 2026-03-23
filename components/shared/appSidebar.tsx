@@ -4,8 +4,8 @@ import {
   SidebarHeader,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
-import { TopBar } from "@/components/side-card"
-import { SideMenu } from "./side-menu"
+import { TopBar } from "@/components/shared/sideCard"
+import { SideMenu } from "./sideMenu"
 import {
   FolderKanban,
   FileChartColumnIncreasing, 

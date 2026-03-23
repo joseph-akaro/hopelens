@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { 
     Tabs,
@@ -6,35 +7,42 @@ import {
     TabsContent
  } from './ui/tabs'
  import { SearchBox } from './searchbox'
-import { Card, CardDescription, CardHeader, CardTitle } from './ui/card'
-import { ProjectCard } from './project/projectCard'
 
-export const TabBox = () => {
+ interface tabboxProps{
+    items: string[];
+    content?: React.ReactNode;
+ }
+
+export const TabBox = ({...props}: tabboxProps) => {
+
   return (
-    <Tabs defaultValue="All" className="w-full flex items-start justify-center">
-        <div className='flex flex-row items-start gap-2'>
-            <SearchBox placeholder={"Search..."} label={"Search"} />
+    <Tabs defaultValue="All" className="w-full flex items-start justify-center p-4">
+        <div className='flex flex-row items-start gap-2 w-full'>
+        <SearchBox placeholder={"Search..."} />
         <TabsList>
-            <TabsTrigger value="all">All</TabsTrigger>
-            <TabsTrigger value="draft">Draft</TabsTrigger>
-            <TabsTrigger value="active">Active</TabsTrigger>
-            <TabsTrigger value="completed">Completed</TabsTrigger>
+            {
+                props.items.map((item) => 
+                    (   
+                        <div key={item}>
+                                <TabsTrigger value={item}>{item}</TabsTrigger>
+                        </div>
+                        )
+                    )
+            }
         </TabsList>
         </div>
-        <TabsContent value={"all"} className={"grid grid-col-1"}>
-            <div className='grid grid-col-3 w-full'>
-                <ProjectCard title={"Call To Thrive"} status={"Draft"} description={"This is a demo project for call to thrive"} countries={" 10 Country"} date={"March 15, 2026"} />
-            </div>
-        </TabsContent>
-        <TabsContent value={"draft"}>
-                <ProjectCard title={"Call To Thrive"} status={"Draft"} description={"This is a demo project for call to thrive"} countries={" 10 Country"} date={"March 15, 2026"} />
-        </TabsContent>
-        <TabsContent value={"active"}>
-                <ProjectCard title={"Call To Thrive"} status={"Active"} description={"This is a demo project for call to thrive"} countries={" 10 Country"} date={"March 15, 2026"} />
-        </TabsContent>
-        <TabsContent value={"completed"}>
-                <ProjectCard title={"Call To Thrive"} status={"Completed"} description={"This is a demo project for call to thrive"} countries={" 10 Country"} date={"March 15, 2026"} />
-        </TabsContent>
+        <div className={"grid grid-col-1 w-full h-full"}>
+            {
+                props.items.map((item) => (
+                    <div key={item}>
+                        <TabsContent value={item}>
+                            {props.content}
+                            {item}
+                        </TabsContent>
+                    </div>
+                ))
+            }
+        </div>
     </Tabs>
   )
 }

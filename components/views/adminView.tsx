@@ -1,20 +1,22 @@
 import React from 'react'
-import { StatusCard } from './dashboard/status'
+import { StatusCard } from '../dashboard/status'
 import { Globe, FolderKanban, TrendingUp, Users, LucideBellDot } from 'lucide-react'
-import { Update } from './dashboard/update'
+import { Update } from '../dashboard/update'
 
-import { UpdateCard } from './update-card'
-import { ActivityCard } from './activity-card'
-import { CountryCard } from './country-card'
-import { LocationCard } from './shared/locationCard'
-import LineCharts from './charts/lineChart'
-import BarCharts from './charts/barChart'
-import PieCharts from './charts/pieChart'
+import { UpdateCard } from '../shared/updateCard'
+import { ActivityCard } from '../shared/activityCard'
+import { CountryCard } from '../shared/countryCard'
+import { LocationCard } from '../shared/locationCard'
+import LineCharts from '../charts/lineChart'
+import BarCharts from '../charts/barChart'
+import PieCharts from '../charts/pieChart'
+import { DashHeader } from '../shared/subHeader'
 
 
-export const AppMain = () => {
+export const AdminView = () => {
   return (
         <div className='flex flex-col w-full h-full flex-1 gap-4'>
+          <DashHeader description='System overview and management controls'/>
           <div className='flex-1 p-4 items-center justify-center gap-4'>
             <div className="flex items-center justify-between md:flex-row flex-col gap-6 w-full">
               <StatusCard title="COUNTRIES" value={8} icon={<Globe size={18}/>} color={"bg-blue-100"} textColor={"text-blue-900"}/>
@@ -89,7 +91,7 @@ const Country = () => {
         <LocationCard title={"Kenya"} description='Eastern Africa' iconColor={"text-green-500"} icon={<LucideBellDot size={18}/>}/>
         <LocationCard title={"Ethiopia"} description='Eastern Africa' iconColor={"text-green-500"} icon={<LucideBellDot size={18}/>}/>
         <LocationCard title={"Tanzania"} description='Eastern Africa' iconColor={"text-green-500"} icon={<LucideBellDot size={18}/>}/>
-          <LocationCard title={"Horn of Africa"} description='Eastern Africa' iconColor={"text-green-500"} icon={<LucideBellDot size={18}/>}/>
+        <LocationCard title={"Horn of Africa"} description='Eastern Africa' iconColor={"text-green-500"} icon={<LucideBellDot size={18}/>}/>
     </div>
   )
 }

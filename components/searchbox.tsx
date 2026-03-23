@@ -1,20 +1,23 @@
-import { Button } from "@/components/ui/button"
-import { ButtonGroup } from "@/components/ui/button-group"
-import { Input } from "@/components/ui/input"
-import { SearchIcon } from "lucide-react"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group"
+import { Search } from "lucide-react"
+
 
 interface searchboxProps {
     placeholder?: string;
-    label: string;
 }
 
-export function SearchBox({ placeholder, label} : searchboxProps) {
+export function SearchBox({...props} : searchboxProps) {
   return (
-    <ButtonGroup className="max-w-sm w-xs focus:border-blue-700">
-      <Button variant="outline" aria-label={label}>
-        <SearchIcon />
-      </Button>
-      <Input placeholder={placeholder} />
-    </ButtonGroup>
+    <InputGroup className="max-w-xs">
+      <InputGroupInput placeholder={props.placeholder} />
+      <InputGroupAddon>
+        <Search />
+      </InputGroupAddon>
+      <InputGroupAddon align="inline-end"></InputGroupAddon>
+    </InputGroup>
   )
 }

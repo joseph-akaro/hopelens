@@ -1,7 +1,7 @@
 import React from "react"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/app-sidebar"
-import { Updates } from "@/components/updates/updates"
+import { AppSidebar } from "@/components/shared/appSidebar"
+import Updates from "@/components/updates/updates"
 
 export default function Page() {
   return (

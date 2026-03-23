@@ -1,5 +1,5 @@
 import { Loader } from "lucide-react"
-import { SidebarHeader } from "./ui/sidebar"
+import { SidebarHeader } from "../ui/sidebar"
 
 export function TopBar() {
   return (

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Card, CardAction, CardTitle, CardHeader, CardFooter } from './ui/card'
 import { Dot } from "lucide-react"
 
 interface UpdateCardProps {

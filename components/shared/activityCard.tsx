@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardDescription, CardTitle } from './ui/card'
+import { Card, CardDescription, CardTitle } from '../ui/card'
 
 interface ActivityCardProps {
     title: string;
