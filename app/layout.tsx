@@ -3,6 +3,11 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next"
+import { auth } from "@/lib/auth/server";
+import { redirect } from "next/navigation";
+
+export const dynamic = "force-dynamic"
+
 
 const roboto = Roboto({
   weight: '400',
@@ -14,11 +19,17 @@ export const metadata: Metadata = {
   description: "A dashboard for tracking and visualizing the impact of OneHope's projects in Eastern Africa.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+    const { data: session } = await auth.getSession()
+
+    if (!session?.user) {
+    redirect("/auth/sign-in") //
+    }
 
   return (
     < html lang="en" suppressHydrationWarning={true} className={roboto.className} >
@@ -29,7 +40,7 @@ export default function RootLayout({
             defaultTheme="light"
             enableSystem
           >
-           {children}
+            {children}
           </ThemeProvider>
         </body>
         <Analytics />
