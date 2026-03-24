@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image";
 import { ArrowLeft, Home } from "lucide-react"
 
-export default function NotFound() {
+export default function page() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-white to-gray-50 px-6">
       <div className="text-center max-w-md">

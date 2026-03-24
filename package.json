@@ -53,6 +53,9 @@
   "trustedDependencies": [
     "@sentry-internal/node-cpu-profiler",
     "core-js",
+    "esbuild",
+    "msw",
+    "sharp",
     "unrs-resolver"
   ],
   "overrides": {

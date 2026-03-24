@@ -46,9 +46,12 @@
     },
   },
   "trustedDependencies": [
-    "core-js",
+    "esbuild",
+    "sharp",
+    "msw",
     "unrs-resolver",
     "@sentry-internal/node-cpu-profiler",
+    "core-js",
   ],
   "overrides": {
     "@better-fetch/fetch": "latest",
