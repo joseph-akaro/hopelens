@@ -3,11 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next"
-import { auth } from "@/lib/auth/server";
-import { redirect } from "next/navigation";
-
-export const dynamic = "force-dynamic"
-
+import { Providers } from "./provider";
 
 const roboto = Roboto({
   weight: '400',
@@ -25,12 +21,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-    const { data: session } = await auth.getSession()
-
-    if (!session?.user) {
-    redirect("/auth/sign-in") //
-    }
-
   return (
     < html lang="en" suppressHydrationWarning={true} className={roboto.className} >
      <head />
@@ -40,7 +30,9 @@ export default async function RootLayout({
             defaultTheme="light"
             enableSystem
           >
-            {children}
+           <Providers>
+              {children}
+           </Providers>
           </ThemeProvider>
         </body>
         <Analytics />
