@@ -19,7 +19,6 @@ export function Providers({ children }: { children: ReactNode }) {
                 router.refresh()
             }}
             emailOTP
-            emailVerification
             social={{
                 providers: ["google"]
             }}
