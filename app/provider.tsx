@@ -27,7 +27,7 @@ export function Providers({ children }: { children: ReactNode }) {
                 forgotPassword: true,
             }}
             signUp={{
-                fields : ["name", "email", "password"],
+                fields : ["name"],
             }}
         >
             {children}
