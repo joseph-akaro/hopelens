@@ -24,13 +24,10 @@ export function Providers({ children }: { children: ReactNode }) {
             }}
             redirectTo="/"
             Link={Link}
-            organization
             credentials={{
                 forgotPassword: true,
             }}
-            signUp={{
-                fields: ['name'],
-            }}
+            signUp={true}
         >
             {children}
         </NeonAuthUIProvider>
