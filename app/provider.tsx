@@ -18,7 +18,6 @@ export function Providers({ children }: { children: ReactNode }) {
             onSessionChange={() => {
                 router.refresh()
             }}
-            emailOTP
             social={{
                 providers: ["google"]
             }}
@@ -27,7 +26,9 @@ export function Providers({ children }: { children: ReactNode }) {
             credentials={{
                 forgotPassword: true,
             }}
-            signUp={true}
+            signUp={{
+                fields : ["name", "email", "password"],
+            }}
         >
             {children}
         </NeonAuthUIProvider>

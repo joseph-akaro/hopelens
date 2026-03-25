@@ -1,13 +1,13 @@
+// middleware.ts
 import { auth } from '@/lib/auth/server';
 
 export default auth.middleware({
-  // Redirects unauthenticated users to sign-in page
-  loginUrl: '/auth/sign-in',
+  loginUrl: '/auth/sign-in'
 });
 
 export const config = {
   matcher: [
-    // Protected routes requiring authentication
-    '/:path*',
+    // Match all paths except static files
+    "/((?!_next/static|_next/image|favicon.ico).*)",
   ],
 };
