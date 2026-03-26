@@ -1,15 +1,9 @@
 import React from "react"
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/shared/appSidebar"
 import Updates from "@/components/updates/updates"
+import DashboardLayout from "@/components/shared/sideBar"
 
 export default function Page() {
   return (
-    <SidebarProvider defaultOpen={true}>
-      <AppSidebar />
-      <SidebarInset>
-        <Updates />
-      </SidebarInset>
-    </SidebarProvider>
+    <DashboardLayout children={<Updates />}/>
   )
 }

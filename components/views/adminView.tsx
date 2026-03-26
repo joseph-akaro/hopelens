@@ -10,13 +10,11 @@ import { LocationCard } from '../shared/locationCard'
 import LineCharts from '../charts/lineChart'
 import BarCharts from '../charts/barChart'
 import PieCharts from '../charts/pieChart'
-import { DashHeader } from '../shared/subHeader'
 
 
 export const AdminView = () => {
   return (
         <div className='flex flex-col w-full h-full flex-1 gap-4'>
-          <DashHeader description='System overview and management controls'/>
           <div className='flex-1 p-4 items-center justify-center gap-4'>
             <div className="flex items-center justify-between md:flex-row flex-col gap-6 w-full">
               <StatusCard title="COUNTRIES" value={8} icon={<Globe size={18}/>} color={"bg-blue-100"} textColor={"text-blue-900"}/>
