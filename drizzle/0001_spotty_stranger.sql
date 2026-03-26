@@ -1,0 +1,1 @@
+DROP TABLE "participating_countries" CASCADE;

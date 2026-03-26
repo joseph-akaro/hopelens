@@ -1,17 +1,10 @@
-// drizzle.config.ts
-import { defineConfig } from "drizzle-kit";
+import { defineConfig } from 'drizzle-kit'
 
 export default defineConfig({
+  schema: ['./lib/schema/'],
+  out: './drizzle',
   dialect: 'postgresql',
-  schema: "./db/schema",
   dbCredentials: {
-    url: process.env.DATABASE_URL!
+    url: process.env.DATABASE_URL!,
   },
-  verbose: true,
-  strict: true,
-  entities: {
-    roles: {
-        provider: 'neon'
-    }
-  }
-});
+})

@@ -1,0 +1,20 @@
+import { db } from "@/lib/db";
+import type { ProjectWithDetails } from "@/lib/types/project";
+
+export async function getProjectsFull(): Promise<ProjectWithDetails[]> {
+  return db.query.projects.findMany({
+    with: {
+      participatingCountries: {
+        with: {
+          country: true,
+        },
+      },
+      updates: {
+        with: {
+          country: true,
+        },
+        orderBy: (u, { desc }) => [desc(u.createdAt)],
+      },
+    },
+  });
+}

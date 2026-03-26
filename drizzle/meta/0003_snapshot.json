@@ -1,6 +1,6 @@
 {
-  "id": "60759e49-571f-44ff-ad3c-a047a48ff8eb",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "5e3ccdf2-f337-44a8-8688-dfdf1c58ba2c",
+  "prevId": "8c5d015f-85c9-4c98-b891-9b2a39d86477",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -402,10 +402,9 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "text",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "name": {
           "name": "name",
@@ -423,7 +422,7 @@
           "name": "phone",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "role": {
           "name": "role",
@@ -438,11 +437,18 @@
           "type": "integer",
           "primaryKey": false,
           "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
         }
       },
       "indexes": {
-        "users_email_idx": {
-          "name": "users_email_idx",
+        "users_email_unique": {
+          "name": "users_email_unique",
           "columns": [
             {
               "expression": "email",
@@ -451,22 +457,7 @@
               "nulls": "last"
             }
           ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "users_country_idx": {
-          "name": "users_country_idx",
-          "columns": [
-            {
-              "expression": "country_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
+          "isUnique": true,
           "concurrently": false,
           "method": "btree",
           "with": {}
