@@ -1,22 +1,19 @@
 import { db } from "@/lib/db";
 import { requireAuth } from "@/lib/auth/permissions";
-import type { ProjectWithDetails } from "@/lib/types/project";
-
-type Params = {
-  params: {
-    id: string;
-  };
-};
+import { NextRequest } from "next/server";
 
 export async function GET(
-  _: Request,
-  { params }: { params: { id: string } }
+  _req: NextRequest,
+  context: { params: Promise<{ id: string }> }
 ): Promise<Response> {
   try {
     await requireAuth();
 
+    // ✅ FIX: await params
+    const { id } = await context.params;
+
     const project = await db.query.projects.findFirst({
-      where: (p, { eq }) => eq(p.id, params.id),
+      where: (p, { eq }) => eq(p.id, id),
       with: {
         participatingCountries: {
           with: { country: true },
