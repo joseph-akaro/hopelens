@@ -10,8 +10,8 @@ export async function GET() {
 
   const data = await db.query.countries.findMany({
     with: {
-      participatingCountries: true,
-    },
+      participatingCountries: true
+    }
   });
 
   return Response.json(data);
