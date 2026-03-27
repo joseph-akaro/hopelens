@@ -1,5 +1,5 @@
 import { getCurrentUser } from "./session";
-import type { User } from "@/lib/schema/user";
+import type { User } from "@/lib/schema";
 
 export async function requireAuth(role?: "admin" | "champion" | "partner"): Promise<User> {
   const user = await getCurrentUser();

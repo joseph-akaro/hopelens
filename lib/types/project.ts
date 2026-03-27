@@ -1,4 +1,4 @@
-import type { Project, Country, Update } from "@/lib/schema/user";
+import type { Project, Country, Update } from "@/lib/schema";
 
 export type ProjectWithDetails = Project & {
   participatingCountries: {

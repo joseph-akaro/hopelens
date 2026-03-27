@@ -42,12 +42,15 @@ CREATE TABLE "updates" (
 );
 --> statement-breakpoint
 CREATE TABLE "users" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" text PRIMARY KEY NOT NULL,
 	"name" varchar(256),
 	"email" varchar NOT NULL,
-	"phone" integer NOT NULL,
+	"phone" integer,
 	"role" "roles" DEFAULT 'partner',
-	"country_id" integer
+	"approved" boolean DEFAULT false,
+	"last_activity" timestamp DEFAULT now(),
+	"country_id" integer,
+	"created_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 ALTER TABLE "countries" ADD CONSTRAINT "countries_region_id_regions_id_fk" FOREIGN KEY ("region_id") REFERENCES "public"."regions"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
@@ -60,5 +63,4 @@ CREATE INDEX "countries_email_idx" ON "countries" USING btree ("email");--> stat
 CREATE INDEX "countries_region_idx" ON "countries" USING btree ("region_id");--> statement-breakpoint
 CREATE INDEX "pc_project_idx" ON "participating_countries" USING btree ("project_id");--> statement-breakpoint
 CREATE INDEX "pc_country_idx" ON "participating_countries" USING btree ("country_id");--> statement-breakpoint
-CREATE INDEX "users_email_idx" ON "users" USING btree ("email");--> statement-breakpoint
-CREATE INDEX "users_country_idx" ON "users" USING btree ("country_id");
+CREATE UNIQUE INDEX "users_email_unique" ON "users" USING btree ("email");

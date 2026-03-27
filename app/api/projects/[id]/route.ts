@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { projects } from "@/lib/schema/user";
+import { projects } from "@/lib/schema";
 import { requireAuth } from "@/lib/auth/permissions";
 import { eq } from "drizzle-orm";
 import { NextRequest } from "next/server";

@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { users } from "@/lib/schema/user";
+import { users } from "@/lib/schema"
 import { eq } from "drizzle-orm";
 
 type AuthUser = {
@@ -37,6 +37,7 @@ export async function syncUser(authUser: AuthUser) {
         email: authUser.email,
         name: authUser.name ?? null,
         role: "partner", // default role
+        approved: false // Pending Admin approval
       })
       .returning();
 

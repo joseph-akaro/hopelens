@@ -2,13 +2,18 @@ import { db } from "@/lib/db";
 import { requireAuth } from "@/lib/auth/permissions";
 import { ok, error } from "@/lib/api/response";
 import { NextRequest } from "next/server";
-import { users } from "@/lib/schema/user";
+import { countries, users } from "@/lib/schema";
 
 export async function GET() {
   try {
     await requireAuth("admin");
-    const allUsers = await db.query.users.findMany();
-    return ok(allUsers);
+    const allUsers = await db.query.users.findMany({
+      with:{
+        countries: true
+      }
+    }
+    );
+    return ok(JSON.stringify(allUsers));
   } catch (err: any) {
     return error(err.message, err.message === "Unauthorized" ? 403 : 500);
   }

@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { updates } from "@/lib/schema/user";
+import { updates } from "@/lib/schema";
 import { requireAuth } from "@/lib/auth/permissions";
 import { NextRequest } from "next/server";
 

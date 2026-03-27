@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { countries } from "@/lib/schema/user";
+import { countries } from "@/lib/schema";
 import { requireAuth } from "@/lib/auth/permissions";
 import { eq } from "drizzle-orm";
 import { NextRequest } from "next/server";

@@ -1,12 +1,12 @@
 import { db } from "@/lib/db";
-import { countries } from "@/lib/schema/user";
+import { countries } from "@/lib/schema";
 import { requireAuth } from "@/lib/auth/permissions";
 import { NextRequest } from "next/server";
 
 export const runtime = "nodejs";
 
 export async function GET() {
-  await requireAuth();
+  await requireAuth("admin");
 
   const data = await db.query.countries.findMany({
     with: {

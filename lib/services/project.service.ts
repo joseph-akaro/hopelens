@@ -1,6 +1,6 @@
 import { getProjectsFull } from "@/lib/queries/project.query";
 import type { ProjectWithDetails } from "@/lib/types/project";
-import type { User } from "@/lib/schema/user";
+import type { User } from "@/lib/schema";
 
 export async function fetchProjectsWithDetails(): Promise<ProjectWithDetails[]> {
   return getProjectsFull();

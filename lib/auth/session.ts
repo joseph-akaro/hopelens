@@ -1,6 +1,6 @@
 import { auth } from "@/lib/auth/server";
 import { syncUser } from "./sync-user";
-import type { User } from "@/lib/schema/user";
+import type { User } from "@/lib/schema";
 
 export async function getCurrentUser(): Promise<User | null> {
   const { data: session } = await auth.getSession();
