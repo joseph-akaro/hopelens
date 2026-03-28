@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Roboto, Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next"
 import { Providers } from "./provider";
+import { cn } from "@/lib/utils";
+
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const roboto = Roboto({
   weight: '400',
@@ -22,18 +24,12 @@ export default async function RootLayout({
 }>) {
 
   return (
-    < html lang="en" suppressHydrationWarning={true} className={roboto.className} >
+    < html lang="en" suppressHydrationWarning={true} className={cn(roboto.className, "font-sans", inter.variable)} >
      <head />
         <body>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem
-          >
            <Providers>
               {children}
            </Providers>
-          </ThemeProvider>
         </body>
         <Analytics />
     </html>
