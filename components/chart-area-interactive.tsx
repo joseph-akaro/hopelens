@@ -33,109 +33,109 @@ import {
 export const description = "An interactive area chart"
 
 const chartData = [
-  { date: "2024-04-01", desktop: 222, mobile: 150 },
-  { date: "2024-04-02", desktop: 97, mobile: 180 },
-  { date: "2024-04-03", desktop: 167, mobile: 120 },
-  { date: "2024-04-04", desktop: 242, mobile: 260 },
-  { date: "2024-04-05", desktop: 373, mobile: 290 },
-  { date: "2024-04-06", desktop: 301, mobile: 340 },
-  { date: "2024-04-07", desktop: 245, mobile: 180 },
-  { date: "2024-04-08", desktop: 409, mobile: 320 },
-  { date: "2024-04-09", desktop: 59, mobile: 110 },
-  { date: "2024-04-10", desktop: 261, mobile: 190 },
-  { date: "2024-04-11", desktop: 327, mobile: 350 },
-  { date: "2024-04-12", desktop: 292, mobile: 210 },
-  { date: "2024-04-13", desktop: 342, mobile: 380 },
-  { date: "2024-04-14", desktop: 137, mobile: 220 },
-  { date: "2024-04-15", desktop: 120, mobile: 170 },
-  { date: "2024-04-16", desktop: 138, mobile: 190 },
-  { date: "2024-04-17", desktop: 446, mobile: 360 },
-  { date: "2024-04-18", desktop: 364, mobile: 410 },
-  { date: "2024-04-19", desktop: 243, mobile: 180 },
-  { date: "2024-04-20", desktop: 89, mobile: 150 },
-  { date: "2024-04-21", desktop: 137, mobile: 200 },
-  { date: "2024-04-22", desktop: 224, mobile: 170 },
-  { date: "2024-04-23", desktop: 138, mobile: 230 },
-  { date: "2024-04-24", desktop: 387, mobile: 290 },
-  { date: "2024-04-25", desktop: 215, mobile: 250 },
-  { date: "2024-04-26", desktop: 75, mobile: 130 },
-  { date: "2024-04-27", desktop: 383, mobile: 420 },
-  { date: "2024-04-28", desktop: 122, mobile: 180 },
-  { date: "2024-04-29", desktop: 315, mobile: 240 },
-  { date: "2024-04-30", desktop: 454, mobile: 380 },
-  { date: "2024-05-01", desktop: 165, mobile: 220 },
-  { date: "2024-05-02", desktop: 293, mobile: 310 },
-  { date: "2024-05-03", desktop: 247, mobile: 190 },
-  { date: "2024-05-04", desktop: 385, mobile: 420 },
-  { date: "2024-05-05", desktop: 481, mobile: 390 },
-  { date: "2024-05-06", desktop: 498, mobile: 520 },
-  { date: "2024-05-07", desktop: 388, mobile: 300 },
-  { date: "2024-05-08", desktop: 149, mobile: 210 },
-  { date: "2024-05-09", desktop: 227, mobile: 180 },
-  { date: "2024-05-10", desktop: 293, mobile: 330 },
-  { date: "2024-05-11", desktop: 335, mobile: 270 },
-  { date: "2024-05-12", desktop: 197, mobile: 240 },
-  { date: "2024-05-13", desktop: 197, mobile: 160 },
-  { date: "2024-05-14", desktop: 448, mobile: 490 },
-  { date: "2024-05-15", desktop: 473, mobile: 380 },
-  { date: "2024-05-16", desktop: 338, mobile: 400 },
-  { date: "2024-05-17", desktop: 499, mobile: 420 },
-  { date: "2024-05-18", desktop: 315, mobile: 350 },
-  { date: "2024-05-19", desktop: 235, mobile: 180 },
-  { date: "2024-05-20", desktop: 177, mobile: 230 },
-  { date: "2024-05-21", desktop: 82, mobile: 140 },
-  { date: "2024-05-22", desktop: 81, mobile: 120 },
-  { date: "2024-05-23", desktop: 252, mobile: 290 },
-  { date: "2024-05-24", desktop: 294, mobile: 220 },
-  { date: "2024-05-25", desktop: 201, mobile: 250 },
-  { date: "2024-05-26", desktop: 213, mobile: 170 },
-  { date: "2024-05-27", desktop: 420, mobile: 460 },
-  { date: "2024-05-28", desktop: 233, mobile: 190 },
-  { date: "2024-05-29", desktop: 78, mobile: 130 },
-  { date: "2024-05-30", desktop: 340, mobile: 280 },
-  { date: "2024-05-31", desktop: 178, mobile: 230 },
-  { date: "2024-06-01", desktop: 178, mobile: 200 },
-  { date: "2024-06-02", desktop: 470, mobile: 410 },
-  { date: "2024-06-03", desktop: 103, mobile: 160 },
-  { date: "2024-06-04", desktop: 439, mobile: 380 },
-  { date: "2024-06-05", desktop: 88, mobile: 140 },
-  { date: "2024-06-06", desktop: 294, mobile: 250 },
-  { date: "2024-06-07", desktop: 323, mobile: 370 },
-  { date: "2024-06-08", desktop: 385, mobile: 320 },
-  { date: "2024-06-09", desktop: 438, mobile: 480 },
-  { date: "2024-06-10", desktop: 155, mobile: 200 },
-  { date: "2024-06-11", desktop: 92, mobile: 150 },
-  { date: "2024-06-12", desktop: 492, mobile: 420 },
-  { date: "2024-06-13", desktop: 81, mobile: 130 },
-  { date: "2024-06-14", desktop: 426, mobile: 380 },
-  { date: "2024-06-15", desktop: 307, mobile: 350 },
-  { date: "2024-06-16", desktop: 371, mobile: 310 },
-  { date: "2024-06-17", desktop: 475, mobile: 520 },
-  { date: "2024-06-18", desktop: 107, mobile: 170 },
-  { date: "2024-06-19", desktop: 341, mobile: 290 },
-  { date: "2024-06-20", desktop: 408, mobile: 450 },
-  { date: "2024-06-21", desktop: 169, mobile: 210 },
-  { date: "2024-06-22", desktop: 317, mobile: 270 },
-  { date: "2024-06-23", desktop: 480, mobile: 530 },
-  { date: "2024-06-24", desktop: 132, mobile: 180 },
-  { date: "2024-06-25", desktop: 141, mobile: 190 },
-  { date: "2024-06-26", desktop: 434, mobile: 380 },
-  { date: "2024-06-27", desktop: 448, mobile: 490 },
-  { date: "2024-06-28", desktop: 149, mobile: 200 },
-  { date: "2024-06-29", desktop: 103, mobile: 160 },
-  { date: "2024-06-30", desktop: 446, mobile: 400 },
+  { date: "2024-04-01", updates: 222, delays: 150 },
+  { date: "2024-04-02", updates: 97, delays: 180 },
+  { date: "2024-04-03", updates: 167, delays: 120 },
+  { date: "2024-04-04", updates: 242, delays: 260 },
+  { date: "2024-04-05", updates: 373, delays: 290 },
+  { date: "2024-04-06", updates: 301, delays: 340 },
+  { date: "2024-04-07", updates: 245, delays: 180 },
+  { date: "2024-04-08", updates: 409, delays: 320 },
+  { date: "2024-04-09", updates: 59, delays: 110 },
+  { date: "2024-04-10", updates: 261, delays: 190 },
+  { date: "2024-04-11", updates: 327, delays: 350 },
+  { date: "2024-04-12", updates: 292, delays: 210 },
+  { date: "2024-04-13", updates: 342, delays: 380 },
+  { date: "2024-04-14", updates: 137, delays: 220 },
+  { date: "2024-04-15", updates: 120, delays: 170 },
+  { date: "2024-04-16", updates: 138, delays: 190 },
+  { date: "2024-04-17", updates: 446, delays: 360 },
+  { date: "2024-04-18", updates: 364, delays: 410 },
+  { date: "2024-04-19", updates: 243, delays: 180 },
+  { date: "2024-04-20", updates: 89, delays: 150 },
+  { date: "2024-04-21", updates: 137, delays: 200 },
+  { date: "2024-04-22", updates: 224, delays: 170 },
+  { date: "2024-04-23", updates: 138, delays: 230 },
+  { date: "2024-04-24", updates: 387, delays: 290 },
+  { date: "2024-04-25", updates: 215, delays: 250 },
+  { date: "2024-04-26", updates: 75, delays: 130 },
+  { date: "2024-04-27", updates: 383, delays: 420 },
+  { date: "2024-04-28", updates: 122, delays: 180 },
+  { date: "2024-04-29", updates: 315, delays: 240 },
+  { date: "2024-04-30", updates: 454, delays: 380 },
+  { date: "2024-05-01", updates: 165, delays: 220 },
+  { date: "2024-05-02", updates: 293, delays: 310 },
+  { date: "2024-05-03", updates: 247, delays: 190 },
+  { date: "2024-05-04", updates: 385, delays: 420 },
+  { date: "2024-05-05", updates: 481, delays: 390 },
+  { date: "2024-05-06", updates: 498, delays: 520 },
+  { date: "2024-05-07", updates: 388, delays: 300 },
+  { date: "2024-05-08", updates: 149, delays: 210 },
+  { date: "2024-05-09", updates: 227, delays: 180 },
+  { date: "2024-05-10", updates: 293, delays: 330 },
+  { date: "2024-05-11", updates: 335, delays: 270 },
+  { date: "2024-05-12", updates: 197, delays: 240 },
+  { date: "2024-05-13", updates: 197, delays: 160 },
+  { date: "2024-05-14", updates: 448, delays: 490 },
+  { date: "2024-05-15", updates: 473, delays: 380 },
+  { date: "2024-05-16", updates: 338, delays: 400 },
+  { date: "2024-05-17", updates: 499, delays: 420 },
+  { date: "2024-05-18", updates: 315, delays: 350 },
+  { date: "2024-05-19", updates: 235, delays: 180 },
+  { date: "2024-05-20", updates: 177, delays: 230 },
+  { date: "2024-05-21", updates: 82, delays: 140 },
+  { date: "2024-05-22", updates: 81, delays: 120 },
+  { date: "2024-05-23", updates: 252, delays: 290 },
+  { date: "2024-05-24", updates: 294, delays: 220 },
+  { date: "2024-05-25", updates: 201, delays: 250 },
+  { date: "2024-05-26", updates: 213, delays: 170 },
+  { date: "2024-05-27", updates: 420, delays: 460 },
+  { date: "2024-05-28", updates: 233, delays: 190 },
+  { date: "2024-05-29", updates: 78, delays: 130 },
+  { date: "2024-05-30", updates: 340, delays: 280 },
+  { date: "2024-05-31", updates: 178, delays: 230 },
+  { date: "2024-06-01", updates: 178, delays: 200 },
+  { date: "2024-06-02", updates: 470, delays: 410 },
+  { date: "2024-06-03", updates: 103, delays: 160 },
+  { date: "2024-06-04", updates: 439, delays: 380 },
+  { date: "2024-06-05", updates: 88, delays: 140 },
+  { date: "2024-06-06", updates: 294, delays: 250 },
+  { date: "2024-06-07", updates: 323, delays: 370 },
+  { date: "2024-06-08", updates: 385, delays: 320 },
+  { date: "2024-06-09", updates: 438, delays: 480 },
+  { date: "2024-06-10", updates: 155, delays: 200 },
+  { date: "2024-06-11", updates: 92, delays: 150 },
+  { date: "2024-06-12", updates: 492, delays: 420 },
+  { date: "2024-06-13", updates: 81, delays: 130 },
+  { date: "2024-06-14", updates: 426, delays: 380 },
+  { date: "2024-06-15", updates: 307, delays: 350 },
+  { date: "2024-06-16", updates: 371, delays: 310 },
+  { date: "2024-06-17", updates: 475, delays: 520 },
+  { date: "2024-06-18", updates: 107, delays: 170 },
+  { date: "2024-06-19", updates: 341, delays: 290 },
+  { date: "2024-06-20", updates: 408, delays: 450 },
+  { date: "2024-06-21", updates: 169, delays: 210 },
+  { date: "2024-06-22", updates: 317, delays: 270 },
+  { date: "2024-06-23", updates: 480, delays: 530 },
+  { date: "2024-06-24", updates: 132, delays: 180 },
+  { date: "2024-06-25", updates: 141, delays: 190 },
+  { date: "2024-06-26", updates: 434, delays: 380 },
+  { date: "2024-06-27", updates: 448, delays: 490 },
+  { date: "2024-06-28", updates: 149, delays: 200 },
+  { date: "2024-06-29", updates: 103, delays: 160 },
+  { date: "2024-06-30", updates: 446, delays: 400 },
 ]
 
 const chartConfig = {
-  visitors: {
-    label: "Visitors",
+  update: {
+    label: "Updates",
   },
-  desktop: {
-    label: "Desktop",
+  updates: {
+    label: "Updates",
     color: "var(--primary)",
   },
-  mobile: {
-    label: "Mobile",
+  delays: {
+    label: "Delays",
     color: "var(--primary)",
   },
 } satisfies ChartConfig
@@ -167,7 +167,7 @@ export function ChartAreaInteractive() {
   return (
     <Card className="@container/card">
       <CardHeader>
-        <CardTitle>Total Visitors</CardTitle>
+        <CardTitle>Total Updates</CardTitle>
         <CardDescription>
           <span className="hidden @[540px]/card:block">
             Total for the last 3 months
@@ -239,12 +239,12 @@ export function ChartAreaInteractive() {
               <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor="var(--chart-2)"
-                  stopOpacity={0.8}
+                  stopColor="var(--chart-3)"
+                  stopOpacity={0.9}
                 />
                 <stop
                   offset="95%"
-                  stopColor="var(--chart-2)"
+                  stopColor="var(--chart-3)"
                   stopOpacity={0.1}
                 />
               </linearGradient>
@@ -279,14 +279,14 @@ export function ChartAreaInteractive() {
               }
             />
             <Area
-              dataKey="mobile"
+              dataKey="delays"
               type="natural"
               fill="url(#fillMobile)"
-              stroke="var(--chart-2)"
+              stroke="var(--chart-3)"
               stackId="a"
             />
             <Area
-              dataKey="desktop"
+              dataKey="updates"
               type="natural"
               fill="url(#fillDesktop)"
               stroke="var(--chart-1)"
