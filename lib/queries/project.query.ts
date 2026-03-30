@@ -2,7 +2,7 @@ import { db } from "@/lib/db";
 import type { ProjectWithDetails } from "@/lib/types/project";
 
 export async function getProjectsFull(): Promise<ProjectWithDetails[]> {
-  return db.query.projects.findMany({
+  const projects = await  db.query.projects.findMany({
     with: {
       participatingCountries: {
         with: {
@@ -17,4 +17,6 @@ export async function getProjectsFull(): Promise<ProjectWithDetails[]> {
       },
     },
   });
+
+  return projects as unknown as ProjectWithDetails[];
 }
