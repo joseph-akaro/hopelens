@@ -3,7 +3,6 @@ import { SiteHeader } from "@/components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { UpdatesView } from "@/components/views/updates-view"
 
-export const dynamic = "force-dynamic"
 
 export default function Page() {
 

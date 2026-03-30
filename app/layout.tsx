@@ -6,6 +6,9 @@ import { Providers } from "./provider";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 
+export const dynamic = "force-dynamic"
+
+
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const roboto = Roboto({

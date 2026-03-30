@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { ReportsView } from "@/components/views/reports-views"
 
+
 export default function Page() {
 
   return (

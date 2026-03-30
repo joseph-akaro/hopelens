@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { MapView } from "@/components/views/map-view"
 
+
 export default function Page() {
 
   return (
