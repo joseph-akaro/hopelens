@@ -1,5 +1,8 @@
  "use client"
-import {
+
+ export const dynamic = "force-dynamic"
+
+ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
