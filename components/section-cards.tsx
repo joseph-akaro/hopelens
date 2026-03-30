@@ -1,5 +1,3 @@
-"use client"
-
 import {
   Card,
   CardAction,
@@ -8,8 +6,12 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { FolderKanbanIcon, UserStar, Gauge, Repeat } from "lucide-react"
+import { fetchTotalChampions } from "@/lib/services/users.service"
+import {fetchOverallResponseRate} from "@/lib/services/response.service"
 
 export function SectionCards() {
+    const totalChampions = fetchTotalChampions();
+    const rate = fetchOverallResponseRate();
 
   return (
     <div className="grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-linear-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4 dark:*:data-[slot=card]:bg-card">
@@ -37,7 +39,7 @@ export function SectionCards() {
         <CardHeader>
           <CardDescription>Champions</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            8
+            {totalChampions}
           </CardTitle>
           <CardAction className="bg-green-100 p-2 rounded-md text-green-500 dark:invert">
             <UserStar size={30}/>
@@ -75,7 +77,7 @@ export function SectionCards() {
         <CardHeader>
           <CardDescription>Response Rate</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            48.5%
+            {rate}%
           </CardTitle>
           <CardAction className="bg-red-100 p-2 rounded-md text-red-500 dark:invert">
               <Gauge size={30}/>

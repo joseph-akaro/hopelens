@@ -72,7 +72,7 @@ export function ChampionTable<TData, TValue>({
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id}>
+                  <TableHead key={header.id} className="text-semibold text-left">
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -93,7 +93,7 @@ export function ChampionTable<TData, TValue>({
                 data-state={row.getIsSelected() && "selected"}
               >
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
+                  <TableCell key={cell.id} className="text-left text-sm font-medium text-muted-foreground">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}

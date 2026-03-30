@@ -1,1 +1,0 @@
-ALTER TABLE "users" ALTER COLUMN "last_activity" SET NOT NULL;

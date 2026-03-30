@@ -2,11 +2,16 @@ import React from 'react'
 import { Button } from '../ui/button'
 import { PlusCircle } from 'lucide-react'
 
-export const ButtonPrimary = () => {
+interface ButtonPrimaryProps {
+  onClick?: () => void;
+  title?: string;
+}
+
+export const ButtonPrimary = ({ onClick, title }: ButtonPrimaryProps) => {
   return (
-    <Button variant="default">
+    <Button variant="default" onClick={onClick} className="cursor-pointer">
         <PlusCircle className="mr-2" />
-        Add Champion
+        {title || "Add new"}
     </Button>
   )
 }

@@ -11,7 +11,7 @@ export async function ChampionView() {
 
   return (
     <div className="container">
-        <ViewTitle description="Country representatives managing research updates" title="Champions" childButton={<ButtonPrimary />} />
+        <ViewTitle description="Country representatives managing research updates" title="Champions" childButton={<ButtonPrimary title="New Champion"/>} />
       <ChampionTable columns={columns} data={users} />
     </div>
   )

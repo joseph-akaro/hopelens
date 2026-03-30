@@ -1,5 +1,6 @@
+"use server"
 import { UserDetail } from "../types/user";
-import { getAllUsers } from "../queries/user.query";
+import { getAllUsers, getTotalChampions } from "../queries/user.query";
 import { User } from "../schema";
 
 export async function fetchAllUsers(): Promise<UserDetail[]> {
@@ -19,6 +20,14 @@ export async function fetchAllUsers(): Promise<UserDetail[]> {
     return formattedUsers as unknown as User[];
 }
 
+export async function fetchTotalChampions(): Promise<number> {
+    const total = await getTotalChampions();
+    return total;
+}
+
+
+
+// Helper function to format last activity time
 const datetime = (date: Date): string => {
     const lastActivity = new Date(date);
     const now = new Date();
