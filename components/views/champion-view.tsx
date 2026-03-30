@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"
+
 import { ViewTitle } from "../shared/view-title"
 import { ChampionTable, columns} from "../user-table"
 import { ButtonPrimary } from "../shared/button-primary"

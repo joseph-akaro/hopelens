@@ -1,4 +1,3 @@
-"use server"
 
 import { SectionCards } from '../section-cards'
 import { ChartAreaInteractive } from '../chart-area-interactive'
