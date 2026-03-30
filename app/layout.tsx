@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"
+
 import type { Metadata } from "next";
 import { Roboto, Inter } from "next/font/google";
 import "./globals.css";
@@ -6,7 +8,6 @@ import { Providers } from "./provider";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 
-export const dynamic = "force-dynamic"
 
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
