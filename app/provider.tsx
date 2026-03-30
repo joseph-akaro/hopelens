@@ -7,6 +7,8 @@ import type { ReactNode } from "react"
 
 import { authClient } from "@/lib/auth/client"
 
+export const dynamic = "force-dynamic"
+
 export function Providers({ children }: { children: ReactNode }) {
     const router = useRouter()
 

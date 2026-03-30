@@ -1,11 +1,11 @@
+export const dynamic = "force-dynamic"
+
 import { AppSidebar } from "@/components/app-sidebar"
 import { SiteHeader } from "@/components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { ChampionView } from "@/components/views/champion-view"
 
-
 export default function Page() {
-
   return (
     <SidebarProvider
       style={
@@ -18,13 +18,13 @@ export default function Page() {
       <AppSidebar variant="sidebar" />
       <SidebarInset>
         <SiteHeader />
-            <div className="flex flex-1 flex-col gap-2">
-            <div className="@container/main flex flex-1 flex-col gap-2">
-                <div className="flex flex-col gap-2 p-4">
-                    <ChampionView />
-                </div>
+        <div className="flex flex-1 flex-col gap-2">
+          <div className="@container/main flex flex-1 flex-col gap-2">
+            <div className="flex flex-col gap-2 p-4">
+              <ChampionView />
             </div>
-            </div>
+          </div>
+        </div>
       </SidebarInset>
     </SidebarProvider>
   )
