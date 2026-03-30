@@ -1,4 +1,5 @@
 import { db } from "../db";
+import { countries } from "../schema";
 import { countryType } from "../types/country";
 
 export async function getCountries(): Promise<countryType[]> {

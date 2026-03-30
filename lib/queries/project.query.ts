@@ -18,5 +18,7 @@ export async function getProjectsFull(): Promise<ProjectWithDetails[]> {
     },
   });
 
+  console.log(projects)
+
   return projects as unknown as ProjectWithDetails[];
 }

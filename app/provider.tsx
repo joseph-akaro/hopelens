@@ -1,15 +1,15 @@
 "use client"
+export const dynamic = "force-dynamic"
 
 import { NeonAuthUIProvider } from "@neondatabase/auth/react/ui"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import type { ReactNode } from "react"
-
 import { authClient } from "@/lib/auth/client"
 
-export const dynamic = "force-dynamic"
 
 export function Providers({ children }: { children: ReactNode }) {
+
     const router = useRouter()
 
     return (

@@ -1,9 +1,11 @@
 import { db } from "@/lib/db";
 import { UserDetail } from "../types/user";
 import { requireAuth } from "../auth/permissions";
-import { users } from "../schema";
+import { cookies } from "next/headers";
+import { rolesEnum } from "../schema";
 
 export async function getUserDetail(): Promise<UserDetail> {
+    cookies()
     const session = await requireAuth("admin");
 
     const user = await db.query.users.findFirst({
@@ -24,13 +26,9 @@ export async function getAllUsers(): Promise<UserDetail[]> {
 }
 
 export async function getTotalChampions(): Promise<number> {
-    await requireAuth("admin");
     const total = await db.query.users.findMany({
         where: (u, { eq }) => eq(u.role, "champion"),
-    }).then(users => users.length);
+    }).then((total) => total.length)
 
-
-    console.log("Total champions:", total);
-
-    return total;
+    return total as unknown as number;
 }

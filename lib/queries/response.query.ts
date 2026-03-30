@@ -55,6 +55,11 @@ export async function getOverallResponseRate() {
       ? 0
       : Math.round((totalResponded / totalExpected) * 100)
 
+
+    console.log("Total expected responses:", totalExpected)
+    console.log("Total on-time responses:", totalResponded)
+    console.log("Overall response rate:", responseRate + "%")
+
   return {
     responseRate,
     totalExpected,
