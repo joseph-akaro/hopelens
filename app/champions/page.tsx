@@ -3,6 +3,8 @@ import { SiteHeader } from "@/components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { ChampionView } from "@/components/views/champion-view"
 
+export const dynamic = "force-dynamic"
+
 export default function Page() {
 
   return (

@@ -18,8 +18,6 @@ export async function getUserDetail(): Promise<UserDetail> {
 } 
 
 export async function getAllUsers(): Promise<UserDetail[]> {
-    await requireAuth("admin");
-
     const users = await db.query.users.findMany();
 
     return users;
