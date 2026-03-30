@@ -1,8 +1,12 @@
 import { auth } from "@/lib/auth/server";
 import { syncUser } from "./sync-user";
 import type { User } from "@/lib/schema";
+import { cookies } from "next/headers";
 
 export async function getCurrentUser(): Promise<User | null> {
+  
+  const cookieStore = cookies(); // ensures request context exists
+  
   const { data: session } = await auth.getSession();
 
   if (!session?.user) return null;
