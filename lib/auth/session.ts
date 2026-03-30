@@ -11,6 +11,7 @@ export async function getCurrentUser(): Promise<User | null> {
     id: session.user.id,
     email: session.user.email,
     name: session.user.name,
+    image: session.user.image,
   });
 
   return user;

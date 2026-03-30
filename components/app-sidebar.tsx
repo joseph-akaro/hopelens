@@ -1,8 +1,6 @@
-"use client"
 
 import * as React from "react"
 
-import { NavDocuments } from "@/components/nav-documents"
 import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
 import { NavUser } from "@/components/nav-user"
@@ -15,13 +13,18 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, CameraIcon, FileTextIcon, Settings2Icon, CircleHelpIcon, SearchIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, CommandIcon, Map, GraduationCap, UserStarIcon, Earth, BarChart3, Rss, TrendingUpIcon, ClockFadingIcon, BookTemplate, BotMessageSquare, MessageSquareTextIcon, RepeatIcon } from "lucide-react"
+import { LayoutDashboardIcon, Settings2Icon, CircleHelpIcon, FileChartColumnIcon, Map, GraduationCap, UserStarIcon, Earth, BarChart3, Rss, TrendingUpIcon, ClockFadingIcon, BookTemplate, BotMessageSquare, MessageSquareTextIcon, RepeatIcon } from "lucide-react"
+
+import { getCurrentUser } from "@/lib/auth/session"
+import { string } from "zod"
+
+const user = await getCurrentUser();
 
 const data = {
   user: {
-    name: "Joseph Akaro",
-    email: "joseph@hopelens.net",
-    avatar: "/onehope.png",
+    name: user?.name || "John Doe",
+    email: user?.email || "johndoe@example.com",
+    avatar: user?.image || "./onehope.png",
   },
   navMain: [
     {
@@ -34,7 +37,7 @@ const data = {
     },
     {
       title: "Map View",
-      url: "#",
+      url: "/map-view",
       icon: (
         <Map
         />
@@ -42,7 +45,7 @@ const data = {
     },
        {
       title: "Projects",
-      url: "#",
+      url: "/projects",
       icon: (
         <FileChartColumnIcon
         />
@@ -50,7 +53,7 @@ const data = {
     },
       {
         title: "Updates",
-        url: "#",
+        url: "/updates",
         icon: (
           <RepeatIcon
           />
@@ -58,7 +61,7 @@ const data = {
     },
       {
         title: "Reports",
-        url: "#",
+        url: "/reports",
         icon: (
         <BarChart3
         />
@@ -66,7 +69,7 @@ const data = {
     },
       {
       title: "Countries",
-      url: "#",
+      url: "/countries",
       icon: (
         <Earth
         />
@@ -74,7 +77,7 @@ const data = {
     },
           {
       title: "Champions",
-      url: "#",
+      url: "/champions",
       icon: (
         <UserStarIcon
         />
@@ -174,7 +177,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <NavSecondary items={data.navSecondary} className="mt-auto cursor-pointer" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

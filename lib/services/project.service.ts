@@ -10,7 +10,7 @@ export async function fetchProjectsForUser(
   user: User
 ): Promise<ProjectWithDetails[]> {
   if (user.role === "champion" && user.countryId) {
-    return getProjectsFull(); // later: filter here
+    return getProjectsFull();
   }
 
   return getProjectsFull();

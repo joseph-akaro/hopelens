@@ -1,34 +1,29 @@
 "use client"
 
-import { Badge } from "@/components/ui/badge"
 import {
   Card,
   CardAction,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { TrendingUpIcon, TrendingDownIcon } from "lucide-react"
+import { FolderKanbanIcon, UserStar, Gauge, Repeat } from "lucide-react"
 
 export function SectionCards() {
+
   return (
     <div className="grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-linear-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4 dark:*:data-[slot=card]:bg-card">
       <Card className="@container/card">
         <CardHeader>
-          <CardDescription>Total Upates</CardDescription>
+          <CardDescription>Projects</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
             4
           </CardTitle>
-          <CardAction>
-            <Badge variant="outline">
-              <TrendingUpIcon
-              />
-              +14%
-            </Badge>
+          <CardAction className="bg-blue-100  p-2 rounded-md text-blue-500 dark:invert">
+              <FolderKanbanIcon size={30}/>
           </CardAction>
         </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
+        {/* <CardFooter className="flex-col items-start gap-1.5 text-sm">
           <div className="line-clamp-1 flex gap-2 font-medium">
             Trending up this month{" "}
             <TrendingUpIcon className="size-4" />
@@ -36,23 +31,19 @@ export function SectionCards() {
           <div className="text-muted-foreground">
             Updates for the last 6 months
           </div>
-        </CardFooter>
+        </CardFooter> */}
       </Card>
       <Card className="@container/card">
         <CardHeader>
-          <CardDescription>Active Champions</CardDescription>
+          <CardDescription>Champions</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
             8
           </CardTitle>
-          <CardAction>
-            <Badge variant="outline">
-              <TrendingDownIcon
-              />
-              -20%
-            </Badge>
+          <CardAction className="bg-green-100 p-2 rounded-md text-green-500 dark:invert">
+            <UserStar size={30}/>
           </CardAction>
         </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
+        {/* <CardFooter className="flex-col items-start gap-1.5 text-sm">
           <div className="line-clamp-1 flex gap-2 font-medium">
             Down 20% this period{" "}
             <TrendingDownIcon className="size-4" />
@@ -60,51 +51,43 @@ export function SectionCards() {
           <div className="text-muted-foreground">
             Weak champions retention{" "}
           </div>
-        </CardFooter>
+        </CardFooter> */}
       </Card>
       <Card className="@container/card">
         <CardHeader>
-          <CardDescription>Active Projects</CardDescription>
+          <CardDescription>Updates</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
             45
           </CardTitle>
-          <CardAction>
-            <Badge variant="outline" className="bg-green-50 border-green-500 text-green-500">
-              <TrendingUpIcon
-              />
-              +12.5%
-            </Badge>
+          <CardAction className="bg-yellow-100 p-2 rounded-md text-yellow-500 dark:invert">
+              <Repeat size={30}/>
           </CardAction>
         </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
+        {/* <CardFooter className="flex-col items-start gap-1.5 text-sm">
           <div className="line-clamp-1 flex gap-2 font-medium">
             Strong project retention{" "}
             <TrendingUpIcon className="size-4" />
           </div>
           <div className="text-muted-foreground">Engagement exceed targets</div>
-        </CardFooter>
+        </CardFooter> */}
       </Card>
-      <Card className="@container/card bg-red-100">
+      <Card className="@container/card">
         <CardHeader>
           <CardDescription>Response Rate</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
             48.5%
           </CardTitle>
-          <CardAction>
-            <Badge variant="outline" className="bg-green-50 text-green-500 border-green-500">
-              <TrendingUpIcon
-              />
-              +4.5%
-            </Badge>
+          <CardAction className="bg-red-100 p-2 rounded-md text-red-500 dark:invert">
+              <Gauge size={30}/>
           </CardAction>
         </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
+        {/* <CardFooter className="flex-col items-start gap-1.5 text-sm">
           <div className="line-clamp-1 flex gap-2 font-medium">
             Unsteady performance increase{" "}
             <TrendingUpIcon className="size-4" />
           </div>
           <div className="text-muted-foreground">Low completion rate</div>
-        </CardFooter>
+        </CardFooter> */}
       </Card>
     </div>
   )

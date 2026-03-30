@@ -1,7 +1,7 @@
 import { AppSidebar } from "@/components/app-sidebar"
 import { SiteHeader } from "@/components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
-import { ProjectView } from "@/components/views/project-view"
+import { MapView } from "@/components/views/map-view"
 
 export default function Page() {
 
@@ -20,7 +20,7 @@ export default function Page() {
             <div className="flex flex-1 flex-col">
             <div className="@container/main flex flex-1 flex-col gap-2">
                 <div className="flex flex-col gap-4 p-4 md:gap-6 md:py-6">
-                    <ProjectView />
+                    <MapView />
                 </div>
             </div>
             </div>

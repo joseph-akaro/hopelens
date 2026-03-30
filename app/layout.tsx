@@ -4,6 +4,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
 import { Providers } from "./provider";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -27,9 +28,11 @@ export default async function RootLayout({
     < html lang="en" suppressHydrationWarning={true} className={cn(roboto.className, "font-sans", inter.variable)} >
      <head />
         <body>
-           <Providers>
+          <Providers>
+            <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
               {children}
-           </Providers>
+            </ThemeProvider>
+          </Providers>
         </body>
         <Analytics />
     </html>

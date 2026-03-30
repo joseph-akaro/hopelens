@@ -9,6 +9,9 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { CirclePlusIcon, MailIcon } from "lucide-react"
+import Link from "next/link"
+
+const roles = ["Admin", "Champion", "Partner"] as const
 
 export function NavMain({
   items,
@@ -30,11 +33,11 @@ export function NavMain({
             >
               <CirclePlusIcon
               />
-              <span>Quick Create</span>
+                {!roles.includes("Admin") ? "New Update" : "New Project"}
             </SidebarMenuButton>
             <Button
               size="icon"
-              className="size-8 group-data-[collapsible=icon]:opacity-0"
+              className="size-8 group-data-[collapsible=icon]:opacity-0 cursor-pointer opacity-100 transition-opacity duration-200 ease-linear hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground"
               variant="outline"
             >
               <MailIcon
@@ -46,9 +49,13 @@ export function NavMain({
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title}>
-                {item.icon}
-                <span>{item.title}</span>
+              <SidebarMenuButton tooltip={item.title} className="cursor-pointer">
+                <Link href={item.url} className="flex items-center gap-2">
+                  {item.icon}
+                  <span className="data-[slot=sidebar-menu-button]:hidden">
+                    {item.title}
+                  </span>
+                </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}

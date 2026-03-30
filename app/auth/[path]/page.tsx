@@ -1,5 +1,6 @@
 import { AuthView } from '@neondatabase/auth/react/ui';
 import { authViewPaths } from '@neondatabase/auth/react/ui/server';
+import '@neondatabase/neon-js/ui/css';
 import Link from 'next/link';
 
 export const dynamicParams = false;
