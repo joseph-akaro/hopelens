@@ -1,5 +1,4 @@
 "use client"
-import React from 'react'
 
 import {
   ColumnDef,
@@ -38,6 +37,10 @@ export const columns: ColumnDef<UserDetail>[] = [
     {
     accessorKey: "role",
     header: "Role",
+    },
+    {
+    accessorKey: "approved",
+    header: "Approved",
     },
     {
     accessorKey: "lastActivity",
@@ -99,7 +102,7 @@ export function ChampionTable<TData, TValue>({
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
+                No Users found.
               </TableCell>
             </TableRow>
           )}

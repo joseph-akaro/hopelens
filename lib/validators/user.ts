@@ -3,11 +3,11 @@ import { z } from "zod";
 export const UserSchema = z.object({
   id: z.string(),
   name: z.string().min(2).max(100),
-  email: z.string(),
+  email: z.string().nonoptional(),
   phone: z.string().optional(),
-  role: z.enum(["Admin", "Champion", "Partner"]),
+  role: z.enum(["admin", "champion", "partner"]).nonoptional().default("partner"),
   image: z.string().optional(),
-  approved: z.boolean().default(false),
-  countryId: z.number().int().positive(),
-  createdAt: z.date().default(() => new Date()),
+  approved: z.boolean().default(false).nonoptional(),
+  countryId: z.number().int().positive().optional(),
+  createdAt: z.date().default(() => new Date()).nonoptional(),
 });

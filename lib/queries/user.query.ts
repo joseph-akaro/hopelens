@@ -1,6 +1,7 @@
 import { db } from "@/lib/db";
 import { UserDetail } from "../types/user";
 import { requireAuth } from "../auth/permissions";
+import { countries } from "../schema";
 
 export async function getUserDetail(): Promise<UserDetail> {
     const session = await requireAuth("admin");
@@ -18,5 +19,8 @@ export async function getUserDetail(): Promise<UserDetail> {
 
 export async function getAllUsers(): Promise<UserDetail[]> {
     await requireAuth("admin");
-    return db.query.users.findMany();
+
+    const users = await db.query.users.findMany();
+
+    return users;
 }

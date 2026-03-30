@@ -15,6 +15,34 @@
       "when": 1774790757141,
       "tag": "0001_eminent_cargill",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1774874404152,
+      "tag": "0002_heavy_spiral",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1774875585681,
+      "tag": "0003_quick_firestar",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1774876521447,
+      "tag": "0004_lumpy_human_fly",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1774876579437,
+      "tag": "0005_thick_wild_pack",
+      "breakpoints": true
     }
   ]
 }
