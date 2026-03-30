@@ -1,5 +1,4 @@
 import { AppSidebar } from "@/components/app-sidebar"
-import { AdminView } from "@/components/views/admin-view"
 import { SiteHeader } from "@/components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { ChampionView } from "@/components/views/champion-view"

@@ -16,7 +16,6 @@ import {
 import { LayoutDashboardIcon, Settings2Icon, CircleHelpIcon, FileChartColumnIcon, Map, GraduationCap, UserStarIcon, Earth, BarChart3, Rss, TrendingUpIcon, ClockFadingIcon, BookTemplate, BotMessageSquare, MessageSquareTextIcon, RepeatIcon } from "lucide-react"
 
 import { getCurrentUser } from "@/lib/auth/session"
-import { string } from "zod"
 
 const user = await getCurrentUser();
 
