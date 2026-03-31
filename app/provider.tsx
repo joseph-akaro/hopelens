@@ -1,5 +1,4 @@
 "use client"
-export const dynamic = "force-dynamic"
 
 import { NeonAuthUIProvider } from "@neondatabase/auth/react/ui"
 import Link from "next/link"
@@ -20,7 +19,6 @@ export function Providers({ children }: { children: ReactNode }) {
             onSessionChange={() => {
                 router.refresh()
             }}
-            organization
             social={{
                 providers: ["google"]
             }}

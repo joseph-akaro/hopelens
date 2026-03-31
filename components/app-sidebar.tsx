@@ -1,4 +1,4 @@
-
+"use client" 
 import * as React from "react"
 
 import { NavMain } from "@/components/nav-main"
@@ -15,15 +15,11 @@ import {
 } from "@/components/ui/sidebar"
 import { LayoutDashboardIcon, Settings2Icon, CircleHelpIcon, FileChartColumnIcon, Map, GraduationCap, UserStarIcon, Earth, BarChart3, Rss, TrendingUpIcon, ClockFadingIcon, BookTemplate, BotMessageSquare, MessageSquareTextIcon, RepeatIcon } from "lucide-react"
 
-import { getCurrentUser } from "@/lib/auth/session"
-
-const user = await getCurrentUser();
-
 const data = {
   user: {
-    name: user?.name || "John Doe",
-    email: user?.email || "johndoe@example.com",
-    avatar: user?.image || "./onehope.png",
+    name: "John Doe",
+    email:"johndoe@example.com",
+    avatar: "./onehope.png",
   },
   navMain: [
     {

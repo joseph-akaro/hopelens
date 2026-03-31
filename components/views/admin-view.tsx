@@ -1,3 +1,4 @@
+"use client"
 
 import { SectionCards } from '../section-cards'
 import { ChartAreaInteractive } from '../chart-area-interactive'
