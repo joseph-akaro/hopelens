@@ -1,12 +1,9 @@
 import { db } from "@/lib/db";
 import { UserDetail } from "../types/user";
 import { requireAuth } from "../auth/permissions";
-import { cookies } from "next/headers";
-import { rolesEnum } from "../schema";
 
-export async function getUserDetail(): Promise<UserDetail> {
-    cookies()
-    const session = await requireAuth("admin");
+export async function getUserDetail(): Promise<UserDetail[]> {
+    const session = await requireAuth("Admin");
 
     const user = await db.query.users.findFirst({
         where: (u, { eq }) => eq(u.id, session.id),
@@ -16,18 +13,33 @@ export async function getUserDetail(): Promise<UserDetail> {
         throw new Error("User not found");
     }
 
-    return user;
+    return user as unknown as UserDetail[];
 } 
 
 export async function getAllUsers(): Promise<UserDetail[]> {
-    const users = await db.query.users.findMany();
+    const users = await db.query.users.findMany({
+        columns: {
+                    id: true,
+                    name: true,
+                    email: true,
+                    phone: true,
+                    role: true,
+                    image: true,
+                    approved: true,
+                    lastActivity: true
+                },
+                with: {
+                    country: true,
+                },
+                }
+);
 
-    return users;
+    return users as unknown as UserDetail[];
 }
 
 export async function getTotalChampions(): Promise<number> {
     const total = await db.query.users.findMany({
-        where: (u, { eq }) => eq(u.role, "champion"),
+        where: (u, { eq }) => eq(u.role, "Champion"),
     }).then((total) => total.length)
 
     return total as unknown as number;

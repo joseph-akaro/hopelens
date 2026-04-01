@@ -4,13 +4,28 @@ import * as t from "drizzle-orm/pg-core";
 import { InferSelectModel, InferInsertModel } from "drizzle-orm";
 
 // Enums
-export const rolesEnum = pgEnum("roles", ["partner", "champion", "admin"]);
+export const rolesEnum = pgEnum("roles", ["Partner", "Champion", "Admin"]);
 export const projectStatusEnum = pgEnum("project_status", [
-  "draft",
-  "active",
-  "completed",
-  "overdue",
+  "Draft",
+  "Active",
+  "Completed",
+  "Overdue",
+  "Cancelled",
 ]);
+// planning, data collection, analyzing and reporting, completed and shared, cancelled
+
+export const projectStage = pgEnum("project_stage", [
+  "Planning",
+  "Data Collection",
+  "Analysis & Reporting",
+  "Shared"
+]);
+
+export  const countryStatus = pgEnum("country_status",[
+  "Active",
+  "Slow",
+  "Ideal"
+])
 
 // Region
 export const regions = table("regions", {
@@ -26,11 +41,11 @@ export const countries = table(
     name: t.varchar("name", { length: 256 }),
     email: t.varchar("email").notNull(),
     phone: t.integer("phone").notNull(),
-    regionId: t.integer("region_id").references(() => regions.id),
+    status: countryStatus("status").default("Active").notNull(),
+    regionId: t.integer("region_id").notNull().references(() => regions.id),
   },
   (table) => [
     t.index("countries_email_idx").on(table.email),
-    t.index("countries_region_idx").on(table.regionId),
   ]
 );
 
@@ -40,10 +55,10 @@ export const users = table("users", {
   name: t.varchar("name", { length: 256 }),
   email: t.varchar("email").notNull(),
   phone: t.integer("phone"),
-  role: rolesEnum("role").default("partner").notNull(),
+  role: rolesEnum("role").default("Partner").notNull(),
   image: t.varchar("image", { length: 256 }),
   approved: t.boolean("approved").default(false).notNull(),
-  lastActivity: t.timestamp("last_activity").defaultNow().notNull(),
+  lastActivity: t.timestamp("last_activity").notNull(),
   countryId: t.integer("country_id").references(() => countries.id),
   createdAt: t.timestamp("created_at").defaultNow().notNull(),
 },
@@ -59,7 +74,8 @@ export const projects = table("projects", {
   title: t.varchar("title").notNull(),
   shortDescription: t.text("short_description").notNull(),
   description: t.text("description").notNull(),
-  status: projectStatusEnum("status").default("draft"),
+  status: projectStatusEnum("status").default("Draft"),
+  stage: projectStage("project_stage").default("Planning"),
   deadline: t.date("deadline").notNull(),
   createdAt: t.timestamp("created_at").defaultNow().notNull(),
   updatedAt: t.timestamp("updated_at"),
@@ -116,10 +132,28 @@ export const updatesRelations = relations(updates, ({ one }) => ({
 }));
 
 // countries relations
-export const countriesRelations = relations(countries, ({ many }) => ({
+export const countriesRelations = relations(countries, ({ one, many }) => ({
+  region: one(regions, {
+    fields: [countries.regionId],
+    references: [regions.id],
+  }),
   participatingCountries: many(participatingCountries),
   updates: many(updates),
+  users: many(users),
 }));
+
+// User Country relation
+export const usersRelations = relations(users, ({ one }) => ({
+  country: one(countries, {
+    fields: [users.countryId],
+    references: [countries.id],
+  }),
+}))
+
+
+export const regionRelations = relations(regions, ({ many }) => ({
+  country: many(countries),
+}))
 
 
 // User types

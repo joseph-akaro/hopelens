@@ -8,6 +8,6 @@ export const UserSchema = z.object({
   role: z.enum(["admin", "champion", "partner"]).nonoptional().default("partner"),
   image: z.string().optional(),
   approved: z.boolean().default(false).nonoptional(),
-  countryId: z.number().int().positive().optional(),
+  country: z.string(),
   createdAt: z.date().default(() => new Date()).nonoptional(),
 });

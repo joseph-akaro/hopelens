@@ -10,9 +10,11 @@ export async function fetchProjectsWithDetails(): Promise<ProjectWithDetails[]> 
 export async function fetchProjectsForUser(
   user: User
 ): Promise<ProjectWithDetails[]> {
-  if (user.role === "champion" && user.countryId) {
+  if (user.role === "Champion" && user.countryId) {
     return getProjectsFull();
   }
+
+  console.log(getProjectsFull())
 
   return getProjectsFull();
 }

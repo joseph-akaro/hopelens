@@ -4,5 +4,17 @@ import { countryType } from "@/lib/types/country";
 
 export async function fetchCountries(): Promise<countryType[]> {
     const countries = await getCountries();
-    return countries;
+    console.log(countries)
+    
+    const formattedCountry = countries.map((country) => ({
+        id: country.id,
+        status: country.status,
+        name: country.name,
+        region: country.region?.name,
+        email: country.email,
+        phone: country.phone,
+        champion: country.champion?.name,
+    }));
+
+    return formattedCountry as unknown as countryType[];
 }

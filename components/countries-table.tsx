@@ -29,17 +29,23 @@ export const columns: ColumnDef<countryType>[] = [
     header: "Country",
   },
   {
-    accessorKey: "email",
-    header: "Email",
+    accessorKey: "region",
+    header: "Region",
   },
     {
-    accessorKey: "users",
-    header: "Champion",
+    accessorKey: "email",
+    header: "Email",
     },
     {
     accessorKey: "phone",
     header: "Phone",
-    },
+    },{
+      accessorKey: "champion",
+      header: "Champion"
+    },{
+      accessorKey: "lastupdate",
+      header: "Last Update"
+    }
 ]
 
 // DataTable Props

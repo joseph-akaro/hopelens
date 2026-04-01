@@ -59,7 +59,7 @@ export function SectionCards() {
         <CardHeader>
           <CardDescription>Updates</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            45
+            {rate.then((rate) => rate.totalResponded)}
           </CardTitle>
           <CardAction className="bg-yellow-100 p-2 rounded-md text-yellow-500 dark:invert">
               <Repeat size={30}/>
@@ -77,7 +77,7 @@ export function SectionCards() {
         <CardHeader>
           <CardDescription>Response Rate</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            {rate}%
+            {rate.then((rate) => rate.responseRate)}%
           </CardTitle>
           <CardAction className="bg-red-100 p-2 rounded-md text-red-500 dark:invert">
               <Gauge size={30}/>

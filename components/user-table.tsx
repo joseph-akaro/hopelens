@@ -18,6 +18,7 @@ import { UserDetail } from '@/lib/types/user'
 import { Button } from "./ui/button";
 import { useSortable } from "@dnd-kit/sortable"
 import { GripVerticalIcon } from "lucide-react";
+import { Checkbox } from "./ui/checkbox";
 
 function DragHandle({ id }: { id: number }) {
   const { attributes, listeners } = useSortable({
@@ -38,6 +39,25 @@ function DragHandle({ id }: { id: number }) {
 }
 
 export const columns: ColumnDef<UserDetail>[] = [
+  {
+    id: "id",
+    header: ({ table }) => (
+      <Checkbox
+        checked={table.getIsAllPageRowsSelected()}
+        onCheckedChange={(value) =>
+          table.toggleAllPageRowsSelected(!!value)
+        }
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) =>
+          row.toggleSelected(!!value)
+        }
+      />
+    ),
+  },
   {
     accessorKey: "name",
     header: "Name",

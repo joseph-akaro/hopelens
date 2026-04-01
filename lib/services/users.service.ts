@@ -1,7 +1,6 @@
 "use server"
 import { UserDetail } from "../types/user";
 import { getAllUsers, getTotalChampions } from "../queries/user.query";
-import { User } from "../schema";
 
 export async function fetchAllUsers(): Promise<UserDetail[]> {
     const users = await getAllUsers();
@@ -11,13 +10,14 @@ export async function fetchAllUsers(): Promise<UserDetail[]> {
         name: user.name,
         email: user.email,
         phone: user.phone,
-        countryId: user.countryId,
+        country: user.country?.name,
         approved: user.approved,
         role: user.role,
         lastActivity: datetime(user.lastActivity)
     }));
 
-    return formattedUsers as unknown as User[];
+
+    return formattedUsers as unknown as UserDetail[];
 }
 
 export async function fetchTotalChampions(): Promise<number> {

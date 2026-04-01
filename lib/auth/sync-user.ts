@@ -7,6 +7,7 @@ type AuthUser = {
   email: string;
   name?: string | null;
   image?: string | null;
+  lastActivity?: Date;
 };
 
 export async function syncUser(authUser: AuthUser) {
@@ -22,6 +23,7 @@ export async function syncUser(authUser: AuthUser) {
         email: authUser.email,
         name: authUser.name ?? existing.name,
         image: authUser.image ?? existing.image,
+        lastActivity: new Date()
       })
       .where(eq(users.id, authUser.id))
       .returning();
@@ -36,9 +38,10 @@ export async function syncUser(authUser: AuthUser) {
         id: authUser.id,
         email: authUser.email,
         name: authUser.name ?? null,
-        role: "partner",
+        role: "Partner",
         approved: false,
         image: authUser.image ?? null,
+        lastActivity: new Date(),
       })
       .returning();
 

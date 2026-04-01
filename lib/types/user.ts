@@ -1,6 +1,8 @@
 import type { User } from "@/lib/schema";
 
-export type UserDetail = User
+export type UserDetail = User & {
+    country: string | any
+}
 
 
 // DATABASE SCHEMA (for reference):
