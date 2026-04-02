@@ -43,7 +43,6 @@ export const countries = table(
     phone: t.integer("phone").notNull(),
     status: countryStatus("status").default("Active").notNull(),
     regionId: t.integer("region_id").notNull().references(() => regions.id),
-    lastactivity: t.timestamp("last_activity").defaultNow(),
   },
   (table) => [
     t.index("countries_email_idx").on(table.email),
