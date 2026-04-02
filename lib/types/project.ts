@@ -7,4 +7,5 @@ export type ProjectWithDetails = Project & {
   updates: (Update & {
     country: Country | null;
   })[];
+  deadline: Date;
 };

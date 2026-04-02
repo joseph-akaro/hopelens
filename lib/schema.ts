@@ -59,7 +59,7 @@ export const users = table("users", {
   role: rolesEnum("role").default("Partner").notNull(),
   image: t.varchar("image", { length: 256 }),
   approved: t.boolean("approved").default(false).notNull(),
-  lastActivity: t.timestamp("last_activity").notNull(),
+  lastActivity: t.timestamp("last_activity").defaultNow(),
   countryId: t.integer("country_id"),
   createdAt: t.timestamp("created_at").defaultNow().notNull(),
 },
@@ -77,7 +77,7 @@ export const projects = table("projects", {
   description: t.text("description").notNull(),
   status: projectStatusEnum("status").default("Draft"),
   stage: projectStage("project_stage").default("Planning"),
-  deadline: t.date("deadline"),
+  deadline: t.timestamp("deadline").notNull(),
   createdAt: t.timestamp("created_at").defaultNow().notNull(),
   updatedAt: t.timestamp("updated_at").defaultNow(),
 });

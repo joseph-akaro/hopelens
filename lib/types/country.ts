@@ -9,5 +9,5 @@ export type countryType = {
     phone: string,
     champion: string | any,
     status: string,
-    lastActivity: Date | string,
+    lastActivity: Date,
 }

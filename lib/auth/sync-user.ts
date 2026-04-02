@@ -17,18 +17,18 @@ export async function syncUser(authUser: AuthUser) {
       .values({
         id: authUser.id,
         email: authUser.email,
-        name: authUser.name ?? null,
+        name: authUser.name,
         role: "Partner", // 
         approved: false,
-        image: authUser.image ?? null,
+        image: authUser.image,
         lastActivity: new Date(),
       })
       .onConflictDoUpdate({
         target: users.id,
         set: {
           email: authUser.email,
-          name: authUser.name ?? null,
-          image: authUser.image ?? null,
+          name: authUser.name,
+          image: authUser.image,
           lastActivity: new Date(),
         },
       })
