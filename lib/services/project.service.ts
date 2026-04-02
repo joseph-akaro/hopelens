@@ -14,7 +14,5 @@ export async function fetchProjectsForUser(
     return getProjectsFull();
   }
 
-  console.log(getProjectsFull())
-
   return getProjectsFull();
 }

@@ -13,6 +13,7 @@ export async function getCurrentUser(): Promise<User | null> {
     email: session.user.email,
     name: session.user.name,
     image: session.user.image,
+    lastActivity: new Date(),
   });
 
   return user;

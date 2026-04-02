@@ -1,4 +1,3 @@
-export const dynamic = "force-dynamic"
 
 import { AppSidebar } from "@/components/app-sidebar"
 import { AdminView } from "@/components/views/admin-view"

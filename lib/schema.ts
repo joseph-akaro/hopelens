@@ -43,6 +43,7 @@ export const countries = table(
     phone: t.integer("phone").notNull(),
     status: countryStatus("status").default("Active").notNull(),
     regionId: t.integer("region_id").notNull().references(() => regions.id),
+    lastactivity: t.timestamp("last_activity").defaultNow(),
   },
   (table) => [
     t.index("countries_email_idx").on(table.email),
@@ -51,7 +52,7 @@ export const countries = table(
 
 // Users
 export const users = table("users", {
-  id: t.text("id").primaryKey(), //
+  id: t.uuid("id").primaryKey(),
   name: t.varchar("name", { length: 256 }),
   email: t.varchar("email").notNull(),
   phone: t.integer("phone"),
@@ -59,7 +60,7 @@ export const users = table("users", {
   image: t.varchar("image", { length: 256 }),
   approved: t.boolean("approved").default(false).notNull(),
   lastActivity: t.timestamp("last_activity").notNull(),
-  countryId: t.integer("country_id").references(() => countries.id),
+  countryId: t.integer("country_id"),
   createdAt: t.timestamp("created_at").defaultNow().notNull(),
 },
 (table) => [
@@ -76,9 +77,9 @@ export const projects = table("projects", {
   description: t.text("description").notNull(),
   status: projectStatusEnum("status").default("Draft"),
   stage: projectStage("project_stage").default("Planning"),
-  deadline: t.date("deadline").notNull(),
+  deadline: t.date("deadline"),
   createdAt: t.timestamp("created_at").defaultNow().notNull(),
-  updatedAt: t.timestamp("updated_at"),
+  updatedAt: t.timestamp("updated_at").defaultNow(),
 });
 
 // Updates
@@ -86,6 +87,7 @@ export const updates = table("updates", {
   id: t.integer("id").primaryKey().generatedAlwaysAsIdentity(),
   title: t.varchar("title").notNull(),
   body: t.text("body").notNull(),
+  deadline: t.integer("deadline").notNull(),
   projectId: t.uuid("project_id").references(() => projects.id),
   countryId: t.integer("country_id").references(() => countries.id),
   createdAt: t.timestamp("created_at").defaultNow().notNull(),

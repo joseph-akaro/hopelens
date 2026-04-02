@@ -1,10 +1,10 @@
 import { getCountries } from "../queries/country.query";
 import { countryType } from "@/lib/types/country";
+import { insertCountry } from "../queries/country.query";
 
 
 export async function fetchCountries(): Promise<countryType[]> {
     const countries = await getCountries();
-    console.log(countries)
     
     const formattedCountry = countries.map((country) => ({
         id: country.id,
@@ -13,8 +13,30 @@ export async function fetchCountries(): Promise<countryType[]> {
         region: country.region?.name,
         email: country.email,
         phone: country.phone,
-        champion: country.champion?.name,
+        users: country.champion,
+        lastactivity: country.lastActivity,
     }));
 
+    console.log(formattedCountry)
+
     return formattedCountry as unknown as countryType[];
+}
+
+
+export async function createCountry(data: {
+  country: string;
+  email: string;
+  phone: number;
+  regionId: number;
+}) {
+  if (!data.country) {
+    throw new Error("Country name is required");
+  }
+
+  try {
+    const [country] = await insertCountry(data);
+    return country;
+  } catch (error) {
+    throw new Error("Failed to create country");
+  }
 }

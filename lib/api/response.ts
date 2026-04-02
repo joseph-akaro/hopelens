@@ -3,7 +3,6 @@ export function ok(data: any, status = 200) {
     status,
     headers: {
       "Content-Type": "application/json",
-      "getSetCookie": "true",
     },
   });
 }
@@ -13,7 +12,6 @@ export function error(message: string, status = 500) {
     status,
     headers: {
       "Content-Type": "application/json",
-      "getSetCookie": "true",
     },
   });
 }
