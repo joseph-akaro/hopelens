@@ -26,7 +26,6 @@ export async function getAllUsers(): Promise<UserDetail[]> {
                     role: true,
                     image: true,
                     approved: true,
-                    lastActivity: true
                 },
                 with: {
                     country: true,

@@ -7,5 +7,4 @@ export const createCountrySchema = z.object({
     name: z.string().min(1),
     region: z.string().min(1),
     users: z.string(),
-    lastactivity: z.date(),
 });
