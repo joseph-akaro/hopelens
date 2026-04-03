@@ -10,7 +10,6 @@ export async function getCountries(): Promise<countryType[]> {
                     name: true,
                     email: true,
                     phone: true,
-                    lastactivity: true,
                 },
       with: {
             region: true,
