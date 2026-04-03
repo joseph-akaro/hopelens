@@ -18,7 +18,7 @@ export async function syncUser(authUser: AuthUser) {
         id: authUser.id,
         email: authUser.email,
         name: authUser.name,
-        role: "Partner", // 
+        role: "Partner",
         approved: false,
         image: authUser.image,
         lastActivity: new Date(),
