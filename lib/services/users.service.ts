@@ -28,7 +28,7 @@ export async function fetchTotalChampions(): Promise<number> {
 
 
 // Helper function to format last activity time
-const datetime = (date: Date): string => {
+const datetime = (date: Date | any): string => {
     const lastActivity = new Date(date);
     const now = new Date();
     const diffInMinutes = Math.floor((now.getTime() - lastActivity.getTime()) / 60000);

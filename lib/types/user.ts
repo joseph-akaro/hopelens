@@ -1,7 +1,8 @@
 import type { User } from "@/lib/schema";
 
 export type UserDetail = User & {
-    country: string | any
+    country: string | any,
+    lastactivity: Date | string,
 }
 
 
