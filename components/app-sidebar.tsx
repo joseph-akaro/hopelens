@@ -14,12 +14,18 @@ import {
 } from "@/components/ui/sidebar"
 import { LayoutDashboardIcon, Settings2Icon, CircleHelpIcon, FileChartColumnIcon, Map, GraduationCap, UserStarIcon, Earth, BarChart3, Rss, TrendingUpIcon, ClockFadingIcon, BookTemplate, BotMessageSquare, MessageSquareTextIcon, RepeatIcon } from "lucide-react"
 
+import { getCurrentUserAction } from "@/app/actions/user-action"
+import { UserDetail } from "@/lib/types/user"
 
-const data = {
+export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+
+  const user = await getCurrentUserAction() 
+
+  const data = {
   user: {
-    name: "John Doe",
-    email: "johndoe@example.com",
-    avatar: "./onehope.png",
+    name: user?.name || "John Doe",
+    email: user?.email ||"johndoe@example.com",
+    avatar: user?.image || "./onehope.png",
   },
   navMain: [
     {
@@ -154,7 +160,7 @@ const data = {
     },
   ],
 }
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
