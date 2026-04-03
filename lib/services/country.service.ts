@@ -14,7 +14,6 @@ export async function fetchCountries(): Promise<countryType[]> {
         email: country.email,
         phone: country.phone,
         users: country.champion,
-        lastactivity: country.lastActivity,
     }));
 
     console.log(formattedCountry)
