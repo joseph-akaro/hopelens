@@ -10,4 +10,5 @@ export const UserSchema = z.object({
   approved: z.boolean().default(false).nonoptional(),
   country: z.string(),
   createdAt: z.date().default(() => new Date()).nonoptional(),
+  lastactivity: z.date().default(() => new Date()).nonoptional()
 });
