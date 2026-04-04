@@ -5,9 +5,10 @@ import { fetchCountries } from "@/lib/services/country.service"
 import { createCountryAction } from '@/app/actions/add-country'
 import { FormDialog } from '../shared/form-dialog'
 
-const countries = await fetchCountries();
 
-export const CountriesView = () => {
+export async function CountriesView(){
+  const countries = await fetchCountries();
+  
   return (
      <div className="container">
           <ViewTitle description="Participating countries and their status" title="Countries" childButton={<AddCountry />} />
