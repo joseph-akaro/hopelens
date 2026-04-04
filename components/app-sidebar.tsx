@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import * as React from "react"
 
 import { NavMain } from "@/components/nav-main"
@@ -15,7 +17,6 @@ import {
 import { LayoutDashboardIcon, Settings2Icon, CalendarRange, CircleHelpIcon, FileChartColumnIcon, Map, GraduationCap, UserStarIcon, Earth, BarChart3, Rss, TrendingUpIcon, ClockFadingIcon, BookTemplate, BotMessageSquare, MessageSquareTextIcon, RepeatIcon } from "lucide-react"
 
 import { getCurrentUserAction } from "@/app/actions/user-action"
-import { UserDetail } from "@/lib/types/user"
 
 export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
@@ -77,7 +78,7 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
       ),
     },
           {
-      title: "Champions",
+      title: "Champions & Users",
       url: "/champions",
       icon: (
         <UserStarIcon

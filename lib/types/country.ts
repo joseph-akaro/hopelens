@@ -7,6 +7,5 @@ export type countryType = {
     region: string | any,
     email: string,
     phone: string,
-    champion: string | any,
     status: string,
 }

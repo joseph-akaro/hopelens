@@ -6,7 +6,6 @@ export async function getCountries(): Promise<countryType[]> {
     const countries = await db.query.countries.findMany({
       with: {
             region: true,
-            users: true
       },
 });
 

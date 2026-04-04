@@ -94,7 +94,7 @@ export const columns: ColumnDef<UserDetail>[] = [
         active: "Active now",
         idle: "Idle",
         offline: user.lastActivity
-          ? `Last seen ${new Date(user.lastActivity).toLocaleString()}`
+          ? `Last seen ${datetime(user.lastActivity)}`
           : "Offline",
       };
 
@@ -267,4 +267,23 @@ export function ChampionTable<TData, TValue>({
       </Table>
     </div>
   )
+}
+
+
+
+const datetime = (date: Date | any): string => {
+    const lastActivity = new Date(date);
+    const now = new Date();
+    const diffInMinutes = Math.floor((now.getTime() - lastActivity.getTime()) / 60000);
+    if (diffInMinutes < 1) {
+        return "Just now";
+    } else if (diffInMinutes < 60) {
+        return `${diffInMinutes} minute${diffInMinutes > 1 ? "s" : ""} ago`;
+    } else if (diffInMinutes < 1440) {
+        const hours = Math.floor(diffInMinutes / 60);
+        return `${hours} hour${hours > 1 ? "s" : ""} ago`;
+    } else {
+        const days = Math.floor(diffInMinutes / 1440);
+        return `${days} day${days > 1 ? "s" : ""} ago`;
+    }
 }

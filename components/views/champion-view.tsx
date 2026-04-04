@@ -4,15 +4,13 @@ import { ChampionTable, columns} from "../user-table"
 import { ButtonPrimary } from "../shared/button-primary"
 import { fetchAllUsers } from "@/lib/services/users.service"
 
-// Mock data for champions
-
 
 export async function ChampionView() {
   const users = await fetchAllUsers();
 
   return (
     <div className="container">
-        <ViewTitle description="Country representatives managing research updates" title="Champions" childButton={<ButtonPrimary title="New Champion"/>} />
+        <ViewTitle description="Country representatives managing research updates" title="Champions & Users" childButton={<ButtonPrimary title="New Champion"/>} />
       <ChampionTable columns={columns} data={users} />
     </div>
   )

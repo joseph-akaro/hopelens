@@ -6,5 +6,4 @@ export const createCountrySchema = z.object({
     status: z.string().nonoptional(),
     name: z.string().min(1),
     region: z.string().min(1),
-    users: z.string(),
 });

@@ -1,6 +1,7 @@
 import { getCountries } from "../queries/country.query";
 import { countryType } from "@/lib/types/country";
 import { insertCountry } from "../queries/country.query";
+import { users } from "../schema";
 
 
 export async function fetchCountries(): Promise<countryType[]> {
@@ -13,7 +14,6 @@ export async function fetchCountries(): Promise<countryType[]> {
         region: country.region?.name,
         email: country.email,
         phone: country.phone,
-        users: country.champion,
     }));
 
     console.log(formattedCountry)

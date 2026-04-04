@@ -6,7 +6,7 @@
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
- 
+import { Button } from "./ui/button"
 import {
   Table,
   TableBody,
@@ -15,14 +15,61 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { PenSquareIcon, Trash2, CheckCircle, Clock, PauseCircle  } from "lucide-react"
 import { countryType } from "@/lib/types/country"
 
 export const columns: ColumnDef<countryType>[] = [
-  {
-    accessorKey: "status",
-    header: "Status",
+{
+  accessorKey: "status",
+  header: "Status",
+  cell: ({ row }) => {
+    const status = row.getValue("status") as string;
+
+    const statusMap = {
+      Active: {
+        icon: CheckCircle,
+        className: "text-green-500",
+        label: "Active",
+      },
+      Slow: {
+        icon: Clock,
+        className: "text-yellow-500",
+        label: "Slow",
+      },
+      Ideal: {
+        icon: PauseCircle,
+        className: "text-gray-400",
+        label: "Ideal",
+      },
+    };
+
+    const current = statusMap[status as keyof typeof statusMap];
+
+    if (!current) return null;
+
+    const Icon = current.icon;
+
+    return (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger>
+            <Icon className={`h-4 w-4 ml-2 ${current.className}`} />
+          </TooltipTrigger>
+          <TooltipContent>
+            <p className="text-xs">{current.label}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    );
   },
-  {
+},
+{
     accessorKey: "name",
     header: "Country",
   },
@@ -37,13 +84,40 @@ export const columns: ColumnDef<countryType>[] = [
     {
     accessorKey: "phone",
     header: "Phone",
-    },{
-      accessorKey: "champion",
-      header: "Champion"
-    },{
-      accessorKey: "lastupdate",
-      header: "Last Update"
-    }
+    },
+    {
+        id: "actions",
+        header: "Actions",
+        cell: ({ row }) => {
+          const country = row.original;
+    
+          return (
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="cursor-pointer w-6 h-6"
+                onClick={() => {
+                  console.log("Edit user:", country);
+                }}
+              >
+                <PenSquareIcon size={10}/>
+              </Button>
+    
+              <Button
+                variant="ghost"
+                size="icon"
+                className="cursor-pointer w-6 h-6"
+                onClick={() => {
+                  console.log("Delete user:", country);
+                }}
+              >
+                <Trash2 size={10}  className="text-red-500"/>
+              </Button>
+            </div>
+          );
+        },
+},
 ]
 
 // DataTable Props

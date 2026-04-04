@@ -11,7 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { BellDot } from "lucide-react"
+import { AlarmClock, BellDot } from "lucide-react"
 
 export const NotificationSheets = () => {
   return (
@@ -26,22 +26,12 @@ export const NotificationSheets = () => {
             Make changes to your profile here. Click save when you&apos;re done.
           </SheetDescription>
         </SheetHeader>
-        <div className="grid flex-1 auto-rows-min gap-6 px-4">
-          <div className="grid gap-3">
-            <Label htmlFor="sheet-demo-name">Name</Label>
-            <Input id="sheet-demo-name" defaultValue="Pedro Duarte" />
-          </div>
-          <div className="grid gap-3">
-            <Label htmlFor="sheet-demo-username">Username</Label>
-            <Input id="sheet-demo-username" defaultValue="@peduarte" />
-          </div>
+        <div className="grid flex-1 auto-rows-min gap-6 px-4 items-start justify-center">
+          <span className="flex flex-col items-center justify-between align-middle gap-4">
+             <AlarmClock className="w-10 h-10 text-muted-foreground" />
+              <p className="text-muted-foreground text-sm">No Notification!</p>
+          </span>
         </div>
-        <SheetFooter>
-          <Button type="submit">Save changes</Button>
-          <SheetClose className="outline">
-            Close
-          </SheetClose>
-        </SheetFooter>
       </SheetContent>
     </Sheet>
   )
