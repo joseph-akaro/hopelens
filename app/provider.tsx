@@ -19,6 +19,7 @@ export function Providers({ children }: { children: ReactNode }) {
             onSessionChange={() => {
                 router.refresh()
             }}
+            emailVerification={true}
             social={{
                 providers: ["google"]
             }}
