@@ -11,16 +11,16 @@ import {
 import { CirclePlusIcon, MailIcon } from "lucide-react"
 import Link from "next/link"
 
-const roles = ["Admin", "Champion", "Partner"] as const
-
 export function NavMain({
   items,
+  role
 }: {
   items: {
     title: string
     url: string
-    icon?: React.ReactNode
-  }[]
+    icon?: React.ReactNode,
+  }[],
+  role?: string,
 }) {
   return (
     <SidebarGroup>
@@ -28,12 +28,12 @@ export function NavMain({
         <SidebarMenu>
           <SidebarMenuItem className="flex items-center gap-2">
             <SidebarMenuButton
-              tooltip="Quick Create"
+              tooltip={role === "Admin" ? "New Project" : "New Update"}
               className="min-w-8 bg-primary text-primary-foreground duration-200 ease-linear hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground"
             >
               <CirclePlusIcon
               />
-                {!roles.includes("Admin") ? "New Update" : "New Project"}
+                {role === "Admin" ? "New Project" : "New Update"}
             </SidebarMenuButton>
             <Button
               size="icon"

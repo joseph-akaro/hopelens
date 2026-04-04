@@ -12,7 +12,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { LayoutDashboardIcon, Settings2Icon, CircleHelpIcon, FileChartColumnIcon, Map, GraduationCap, UserStarIcon, Earth, BarChart3, Rss, TrendingUpIcon, ClockFadingIcon, BookTemplate, BotMessageSquare, MessageSquareTextIcon, RepeatIcon } from "lucide-react"
+import { LayoutDashboardIcon, Settings2Icon, CalendarRange, CircleHelpIcon, FileChartColumnIcon, Map, GraduationCap, UserStarIcon, Earth, BarChart3, Rss, TrendingUpIcon, ClockFadingIcon, BookTemplate, BotMessageSquare, MessageSquareTextIcon, RepeatIcon } from "lucide-react"
 
 import { getCurrentUserAction } from "@/app/actions/user-action"
 import { UserDetail } from "@/lib/types/user"
@@ -37,10 +37,10 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
       ),
     },
     {
-      title: "Map View",
-      url: "/map-view",
+      title: "Planning",
+      url: "/planning",
       icon: (
-        <Map
+        <CalendarRange
         />
       ),
     },
@@ -177,7 +177,7 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain items={data.navMain} role={user.role} />
         <NavSecondary items={data.navSecondary} className="mt-auto cursor-pointer" />
       </SidebarContent>
       <SidebarFooter>
