@@ -1,7 +1,6 @@
 import { db } from "../db";
 import { update } from "../types/update";
 
-
 export async function getUpdates(): Promise<update> {
     const updates = await db.query.updates.findMany({
         with: {
@@ -16,7 +15,7 @@ export async function getUpdates(): Promise<update> {
         title: update.title,
         project: update.project?.title,
         country: update.country?.name,
-        deadline: update.deadline
+        deadline: update.deadline?.toDateString()
       }
     })
 
