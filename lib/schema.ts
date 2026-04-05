@@ -86,7 +86,7 @@ export const updates = table("updates", {
   id: t.integer("id").primaryKey().generatedAlwaysAsIdentity(),
   title: t.varchar("title").notNull(),
   body: t.text("body").notNull(),
-  deadline: t.integer("deadline").notNull(),
+  deadline: t.timestamp("deadline"),
   projectId: t.uuid("project_id").references(() => projects.id),
   countryId: t.integer("country_id").references(() => countries.id),
   createdAt: t.timestamp("created_at").defaultNow().notNull(),
