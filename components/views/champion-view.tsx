@@ -3,15 +3,47 @@ import { ViewTitle } from "../shared/view-title"
 import { ChampionTable, columns} from "../user-table"
 import { ButtonPrimary } from "../shared/button-primary"
 import { fetchAllUsers } from "@/lib/services/users.service"
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import { Badge } from "../ui/badge";
+import { Eye, Info, ShieldCheckIcon, UserStarIcon } from "lucide-react";
 
 
 export async function ChampionView() {
   const users = await fetchAllUsers();
 
   return (
-    <div className="container">
-        <ViewTitle description="Country representatives managing research updates" title="Champions & Users" childButton={<ButtonPrimary title="New Champion"/>} />
+    <div className="container gap-4 flex flex-col">
+      <ViewTitle description="Country representatives managing research updates" title="Champions & Users" childButton={<ButtonPrimary title="New Champion"/>} />
+      <div className="grid sm:grid-cols-3 grid-cols-1 gap-4">
+        <InfoCard title="Admin" description="Manages all projects and users" icon={<ShieldCheckIcon />}/>
+        <InfoCard title="Champion" description="Manages country projects & partner lists" icon={<UserStarIcon />}/>
+        <InfoCard title="Parnter" description="Views assigned projects" icon={<Eye />}/>
+      </div>
       <ChampionTable columns={columns} data={users} />
     </div>
+  )
+}
+
+interface infocard {
+ title: string,
+ icon: React.ReactNode | null,
+ description?: string,
+}
+
+const InfoCard = ({...props}: infocard) => {
+  return (
+    <Card className="container-sm max-h-xs">
+      <CardHeader>
+        <CardAction className="text-primary">
+            {props.icon}
+        </CardAction>
+        <CardTitle>{props.title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <CardDescription>
+          {props.description}
+        </CardDescription>
+      </CardContent>
+    </Card>
   )
 }

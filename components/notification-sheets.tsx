@@ -11,7 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { AlarmClock, BellDot } from "lucide-react"
+import { InboxIcon , BellDot } from "lucide-react"
 
 export const NotificationSheets = () => {
   return (
@@ -28,7 +28,7 @@ export const NotificationSheets = () => {
         </SheetHeader>
         <div className="grid flex-1 auto-rows-min gap-6 px-4 items-start justify-center">
           <span className="flex flex-col items-center justify-between align-middle gap-4">
-             <AlarmClock className="w-10 h-10 text-muted-foreground" />
+             <InboxIcon  className="w-10 h-10 text-muted-foreground" />
               <p className="text-muted-foreground text-sm">No Notification!</p>
           </span>
         </div>
