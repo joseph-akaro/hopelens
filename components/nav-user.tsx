@@ -22,7 +22,8 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { EllipsisVerticalIcon, CircleUserRoundIcon, BellIcon, LogOutIcon, BadgeHelpIcon } from "lucide-react"
+import { EllipsisVerticalIcon, CircleUserRoundIcon, BellIcon, LogOutIcon, BadgeHelpIcon, SettingsIcon } from "lucide-react"
+import { redirect } from "next/navigation"
 
 export function NavUser({
   user,
@@ -80,15 +81,13 @@ export function NavUser({
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <CircleUserRoundIcon
-                />
+              <DropdownMenuItem className={'cursor-pointer'} onClick={() => redirect('/account')}>
+                <CircleUserRoundIcon/>
                 Account
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <BellIcon
-                />
-                Notifications
+                <SettingsIcon />
+                Settings
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <BadgeHelpIcon

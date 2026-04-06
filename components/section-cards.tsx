@@ -19,7 +19,7 @@ export async function SectionCards() {
         <CardHeader>
           <CardDescription>Projects</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            4
+            10
           </CardTitle>
           <CardAction className="bg-blue-100  p-2 rounded-md text-blue-500 dark:invert">
               <FolderKanbanIcon size={30}/>

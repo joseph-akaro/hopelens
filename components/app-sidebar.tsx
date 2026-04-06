@@ -179,7 +179,7 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} role={user.role} />
-        <NavSecondary items={data.navSecondary} className="mt-auto cursor-pointer" />
+        {/* <NavSecondary items={data.navSecondary} className="mt-auto cursor-pointer" /> */}
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

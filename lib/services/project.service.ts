@@ -1,10 +1,16 @@
-import { getProjectsFull } from "@/lib/queries/project.query";
+import { getAllProjects, getProjectsFull } from "@/lib/queries/project.query";
 import type { ProjectWithDetails } from "@/lib/types/project";
 import type { User } from "@/lib/schema";
 
 export async function fetchProjectsWithDetails(): Promise<ProjectWithDetails[]> {
   const projects = await getProjectsFull();
   return projects;
+}
+
+export async function fetchAllProjects(): Promise<ProjectWithDetails[]>{
+  const projects = await getAllProjects()
+
+  return projects as unknown as ProjectWithDetails[]
 }
 
 export async function fetchProjectsForUser(
