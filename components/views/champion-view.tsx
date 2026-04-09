@@ -15,8 +15,8 @@ export async function ChampionView() {
       <ViewTitle description="Country representatives managing research updates" title="Champions & Users" childButton={<ButtonPrimary title="New Champion"/>} />
       <div className="grid sm:grid-cols-3 grid-cols-1 gap-4">
         <InfoCard title="Admin" description="Manages all projects and users" icon={<ShieldCheckIcon />} iconColo="text-blue-500 bg-blue-50 rounded-md"/>
-        <InfoCard title="Champion" description="Manages country projects & partner lists" icon={<UserStarIcon />} iconColo="text-green-500 bg-green-50 rounded-md"/>
-        <InfoCard title="Parnter" description="Views assigned projects" icon={<Eye />} iconColo="text-yellow-500 bg-yellow-50 rounded-md"/>
+        <InfoCard title="Champion" description="Manages country projects & partner lists" icon={<UserStarIcon />} iconColo="text-yellow-500 bg-yellow-50 rounded-md"/>
+        <InfoCard title="Parnter" description="Views assigned projects" icon={<Eye />} iconColo="text-green-500 bg-green-50 rounded-md"/>
       </div>
       <ChampionTable columns={columns} data={users} />
     </div>
@@ -32,9 +32,9 @@ interface infocard {
 
 const InfoCard = ({...props}: infocard) => {
   return (
-    <Card className="container-sm max-h-xs">
+    <Card className="container-sm max-h-xs" size="sm">
       <CardHeader>
-        <CardAction className={`${props.iconColo} w-8 h-8 flex items-center justify-center dark:invert`}>
+        <CardAction className={`${props.iconColo} w-8 h-8 flex items-center justify-center dark:bg-muted`}>
             {props.icon}
         </CardAction>
         <CardTitle>{props.title}</CardTitle>

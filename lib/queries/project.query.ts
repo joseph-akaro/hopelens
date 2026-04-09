@@ -18,21 +18,8 @@ export async function getAllProjects(): Promise<ProjectWithDetails[]>{
 export async function getProjectsFull(): Promise<ProjectWithDetails[]> {
   const projects = await  db.query.projects.findMany({
     with: {
-      participatingCountries: {
-        with: {
-          country: true,
-        },
-      },
-      updates: {
-        with: {
-          country: true,
-        },
-        orderBy: (u, { desc }) => [desc(u.createdAt)],
-      },
-    },
-  });
-
-  console.log(projects)
-
+      participatingCountries: true,
+    }
+  })
   return projects as unknown as ProjectWithDetails[];
 }

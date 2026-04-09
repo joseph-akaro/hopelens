@@ -36,6 +36,10 @@ export const columns: ColumnDef<update>[] = [
     header: "Deadline",
     },
     {
+      accessorKey: "status",
+      header: "Status"
+    },
+    {
         id: "actions",
         header: "Actions",
         cell: ({ row }) => {

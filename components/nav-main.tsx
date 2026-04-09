@@ -49,14 +49,14 @@ export function NavMain({
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title} className="cursor-pointer">
                 <Link href={item.url} className="flex items-center gap-2">
+              <SidebarMenuButton tooltip={item.title} className="cursor-pointer">
                   {item.icon}
                   <span className="data-[slot=sidebar-menu-button]:hidden">
                     {item.title}
                   </span>
-                </Link>
               </SidebarMenuButton>
+                </Link>
             </SidebarMenuItem>
           ))}
         </SidebarMenu>

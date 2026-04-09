@@ -4,5 +4,6 @@ export type update = {
     body: string,
     project: string,
     country: string,
+    status: string,
     deadline: Date,
 }

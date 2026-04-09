@@ -14,7 +14,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { LayoutDashboardIcon, Settings2Icon, CalendarRange, CircleHelpIcon, FileChartColumnIcon, Map, GraduationCap, UserStarIcon, Earth, BarChart3, Rss, TrendingUpIcon, ClockFadingIcon, BookTemplate, BotMessageSquare, MessageSquareTextIcon, RepeatIcon } from "lucide-react"
+import { LayoutDashboardIcon, Settings2Icon, CalendarRange, CircleHelpIcon, FileChartColumnIcon, Map, GraduationCap, UserStarIcon, Earth, BarChart3, Rss, TrendingUpIcon, ClockFadingIcon, BookTemplate, BotMessageSquare, MessageSquareTextIcon, RepeatIcon, Handshake } from "lucide-react"
 
 import { getCurrentUserAction } from "@/app/actions/user-action"
 
@@ -38,10 +38,10 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
       ),
     },
     {
-      title: "Planning",
-      url: "/planning",
+      title: "Partners",
+      url: "/partners",
       icon: (
-        <CalendarRange
+        <Handshake
         />
       ),
     },

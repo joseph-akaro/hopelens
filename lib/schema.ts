@@ -5,6 +5,7 @@ import { InferSelectModel, InferInsertModel } from "drizzle-orm";
 
 // Enums
 export const rolesEnum = pgEnum("roles", ["Partner", "Champion", "Admin"]);
+export const updateStatusEnum = pgEnum("state", ["Pending", "Approved", "Canceled"]);
 export const projectStatusEnum = pgEnum("project_status", [
   "Draft",
   "Active",
@@ -86,6 +87,7 @@ export const updates = table("updates", {
   id: t.integer("id").primaryKey().generatedAlwaysAsIdentity(),
   title: t.varchar("title").notNull(),
   body: t.text("body").notNull(),
+  status: updateStatusEnum("status").default("Pending").notNull(),
   deadline: t.timestamp("deadline"),
   projectId: t.uuid("project_id").references(() => projects.id),
   countryId: t.integer("country_id").references(() => countries.id),
@@ -120,7 +122,6 @@ export const projectsRelations = relations(projects, ({ many }) => ({
   updates: many(updates),
 }));
 
-// updates relations
 export const updatesRelations = relations(updates, ({ one }) => ({
   project: one(projects, {
     fields: [updates.projectId],
@@ -132,7 +133,6 @@ export const updatesRelations = relations(updates, ({ one }) => ({
   }),
 }));
 
-// countries relations
 export const countriesRelations = relations(countries, ({ one, many }) => ({
   region: one(regions, {
     fields: [countries.regionId],
@@ -143,7 +143,6 @@ export const countriesRelations = relations(countries, ({ one, many }) => ({
   users: many(users),
 }));
 
-// User Country relation
 export const usersRelations = relations(users, ({ one }) => ({
   country: one(countries, {
     fields: [users.countryId],
@@ -155,6 +154,20 @@ export const usersRelations = relations(users, ({ one }) => ({
 export const regionRelations = relations(regions, ({ many }) => ({
   country: many(countries),
 }))
+
+export const participatingCountriesRelations = relations(
+  participatingCountries,
+  ({ one }) => ({
+    project: one(projects, {
+      fields: [participatingCountries.projectId],
+      references: [projects.id],
+    }),
+    country: one(countries, {
+      fields: [participatingCountries.countryId],
+      references: [countries.id],
+    }),
+  })
+);
 
 
 // User types

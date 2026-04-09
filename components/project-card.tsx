@@ -11,7 +11,7 @@ import {
 import { PenBoxIcon, Trash2 } from "lucide-react"
 
 interface projectCardProps{
-    imageUrl: string;
+    imageUrl: string | null;
     title: string;
     stage?: string | null;
     shortdescription?: string;
@@ -19,19 +19,28 @@ interface projectCardProps{
 }
 
 export function ProjectCard({...props} : projectCardProps) {
+  const header = props.title as string;
+  const headerLimit = 25;
+
+  const text = props.shortdescription as string;
+  const limit = 60
+
+  const shortenedText = text.length > limit ? text?.substring(0, limit) + "..." : text;
+  const shortenedHeader = header.length > headerLimit ? header?.substring(0, headerLimit) + "..." : header;
+
   return (
-    <Card className="@container/main max-w-sm pt-0">
+    <Card className="container max-w-sm pt-0" size="sm">
       <img
         src={`${props.imageUrl}`}
         alt="Project Image"
         className="relative aspect-video w-full object-cover brightness-60 dark:brightness-40"
       />
-      <CardHeader className="flex flex-col mb-3 mt-2">
+      <CardHeader className="flex flex-col mt-2">
         <CardAction className="flex flex-row w-full items-start justify-between">
-          <CardTitle>{props.title}</CardTitle>
-          <Badge variant="secondary">{props.stage}</Badge>
+          <CardTitle>{shortenedHeader}</CardTitle>
+          <Badge variant="secondary" className={props.stage === 'Shared' ? `bg-green-50 text-green-700  border-green-700` : `bg-primary/20 text-primary`}>{props.stage}</Badge>
         </CardAction>
-        <CardDescription>{props.shortdescription}</CardDescription>
+        <CardDescription>{shortenedText}</CardDescription>
       </CardHeader>
       <CardFooter className="flex items-center justify-between">
         <span className="test-sm text-muted-foreground flex-1 w-[70%]">{props.countries} Countries</span>

@@ -4,9 +4,11 @@ import { ProjectCard } from "@/components/project-card"
 import { SiteHeader } from "@/components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { ProjectView } from "@/components/views/project-view"
+import { GetProjects } from "./actions"
 
-
-export default function Page() {
+export default async function Page() {
+  // fetching projects from server actions
+  const projects = await GetProjects()
 
   return (
     <SidebarProvider
@@ -24,14 +26,15 @@ export default function Page() {
             <div className="@container/main flex flex-1 flex-col gap-2">
                 <div className="flex flex-col gap-4 p-4 md:gap-6 md:py-6">
                     <ProjectView />
-                    <div className="grid sm:grid-cols-3 gap-4 w-full">
-                    <ProjectCard imageUrl="/images/pe.jpg" title="Program Evaluation" shortdescription={"This project’s goal is to evaluate the top three programs (17 Stories, Stories of Hope and Lead Today)..."} countries={4} stage={"Reporting & Analysis"}/>
-                    <ProjectCard imageUrl="/images/cct-1.png" title="Call To Thrive" shortdescription={"This project’s goal is to evaluate the top three programs (17 Stories, Stories of Hope and Lead Today)..."} countries={3} stage={"Reporting & Analysis"}/>
-                    <ProjectCard imageUrl="/images/lead.webp" title="Step By Step" shortdescription={"This project’s goal is to evaluate the top three programs (17 Stories, Stories of Hope and Lead Today)..."} countries={3} stage={"Planning"}/>
-                    <ProjectCard imageUrl="/images/ha.jpg" title="Final Third" shortdescription={"This project’s goal is to evaluate the top three programs (17 Stories, Stories of Hope and Lead Today)..."} countries={1} stage={"Planning"}/>
-                    <ProjectCard imageUrl="/images/gyc.png" title="Global Youth Culture" shortdescription={"This project’s goal is to evaluate the top three programs (17 Stories, Stories of Hope and Lead Today)..."} countries={1} stage={"Planning"}/>
-                    <ProjectCard imageUrl="/images/cct.jpg" title="Equiping for Biblical Discipleship" shortdescription={"This project’s goal is to evaluate the top three programs (17 Stories, Stories of Hope and Lead Today)..."} countries={7} stage={"Planning"}/>
-                    </div>
+                    <div  className="grid sm:grid-cols-3 gap-4 w-full">
+                    {
+                      projects.map((project) => (
+                        <div key={project.id}>
+                          <ProjectCard imageUrl={project.imageUrl} title={project.title} stage={project.stage} shortdescription={project.shortDescription} countries={project.participatingCountries.length}/>
+                        </div>
+                      ))
+                    }
+                  </div>
                 </div>
             </div>
             </div>
