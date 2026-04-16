@@ -85,11 +85,11 @@ export function NavUser({
                 <CircleUserRoundIcon/>
                 Account
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem className={'cursor-pointer'} onClick={() => redirect('/setting')}>
                 <SettingsIcon />
                 Settings
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem >
                 <BadgeHelpIcon
                 />
                 Help

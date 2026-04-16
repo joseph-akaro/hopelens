@@ -17,6 +17,7 @@ import {
 import { LayoutDashboardIcon, Settings2Icon, CalendarRange, CircleHelpIcon, FileChartColumnIcon, Map, GraduationCap, UserStarIcon, Earth, BarChart3, Rss, TrendingUpIcon, ClockFadingIcon, BookTemplate, BotMessageSquare, MessageSquareTextIcon, RepeatIcon, Handshake } from "lucide-react"
 
 import { getCurrentUserAction } from "@/app/actions/user-action"
+import { UserButton } from "@neondatabase/auth/react/ui";
 
 export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
@@ -145,7 +146,7 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
   navSecondary: [
     {
       title: "Settings",
-      url: "#",
+      url: "/setting",
       icon: (
         <Settings2Icon
         />
@@ -169,7 +170,7 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
           <SidebarMenuItem>
             <SidebarMenuButton
               className="data-[slot=sidebar-menu-button]:p-1.5!"
-              render={<a href="#" />}
+              render={<a href="/" />}
             >
               <img src="/onehope.png" alt="Onehope primary icon" className="size-5!" />
               <span className="text-base font-semibold">HOPELENS</span>
