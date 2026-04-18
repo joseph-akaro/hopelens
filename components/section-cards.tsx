@@ -4,93 +4,49 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from "@/components/ui/card"
-import { FolderKanbanIcon, UserStar, Gauge, Repeat } from "lucide-react"
+import { FolderKanbanIcon, UserStar, Gauge, Repeat, TrendingUpIcon, TrendingDownIcon, Building2 } from "lucide-react"
 import { fetchTotalChampions } from "@/lib/services/users.service"
-import {fetchOverallResponseRate} from "@/lib/services/response.service"
 
 export async function SectionCards() {
     const totalChampions = await fetchTotalChampions();
-    const rate = await fetchOverallResponseRate();
 
   return (
-    <div className="grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-linear-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4 dark:*:data-[slot=card]:bg-card">
-      <Card className="@container/card">
-        <CardHeader>
-          <CardDescription>Projects</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            10
-          </CardTitle>
-          <CardAction className="bg-blue-100  p-2 rounded-md text-blue-500 dark:invert">
-              <FolderKanbanIcon size={30}/>
-          </CardAction>
-        </CardHeader>
-        {/* <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
-            Trending up this month{" "}
-            <TrendingUpIcon className="size-4" />
-          </div>
-          <div className="text-muted-foreground">
-            Updates for the last 6 months
-          </div>
-        </CardFooter> */}
-      </Card>
-      <Card className="@container/card">
-        <CardHeader>
-          <CardDescription>Champions</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            {totalChampions}
-          </CardTitle>
-          <CardAction className="bg-green-100 p-2 rounded-md text-green-500 dark:invert">
-            <UserStar size={30}/>
-          </CardAction>
-        </CardHeader>
-        {/* <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
-            Down 20% this period{" "}
-            <TrendingDownIcon className="size-4" />
-          </div>
-          <div className="text-muted-foreground">
-            Weak champions retention{" "}
-          </div>
-        </CardFooter> */}
-      </Card>
-      <Card className="@container/card">
-        <CardHeader>
-          <CardDescription>Updates</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            {rate.totalExpected}
-          </CardTitle>
-          <CardAction className="bg-yellow-100 p-2 rounded-md text-yellow-500 dark:invert">
-              <Repeat size={30}/>
-          </CardAction>
-        </CardHeader>
-        {/* <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
-            Strong project retention{" "}
-            <TrendingUpIcon className="size-4" />
-          </div>
-          <div className="text-muted-foreground">Engagement exceed targets</div>
-        </CardFooter> */}
-      </Card>
-      <Card className="@container/card">
-        <CardHeader>
-          <CardDescription>Response Rate</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            {rate.responseRate}%
-          </CardTitle>
-          <CardAction className="bg-red-100 p-2 rounded-md text-red-500 dark:invert">
-              <Gauge size={30}/>
-          </CardAction>
-        </CardHeader>
-        {/* <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
-            Unsteady performance increase{" "}
-            <TrendingUpIcon className="size-4" />
-          </div>
-          <div className="text-muted-foreground">Low completion rate</div>
-        </CardFooter> */}
-      </Card>
+    <div className="grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-linear-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-4 @5xl/main:grid-cols-4 dark:*:data-[slot=card]:bg-card">
+      <StatusCard title="TOTAL PROJECTS" icon={<FolderKanbanIcon />} value="100" increment={10} trendIcon={<TrendingUpIcon className="size-4" />} />
+      <StatusCard title="ACTIVE USERS" icon={<UserStar />} value={totalChampions.toString()} increment={15} trendIcon={<TrendingUpIcon className="size-4" />} />
+      <StatusCard title="ASSETS IN USE" icon={<Building2 />} value="1,000" increment={20} trendIcon={<TrendingUpIcon className="size-4" />} />
+      <StatusCard title="PERFORMANCE" icon={<Gauge />} value="35%" increment={5} trendIcon={<TrendingUpIcon className="size-4" />} />
     </div>
+  )
+}
+
+
+function StatusCard({...props} : {
+  icon: React.ReactNode;
+  title: string;
+  value: string;
+  increment: number;
+  trendIcon: React.ReactNode;
+}) {
+  return (
+    <Card className="container size-xs">
+      <CardHeader>
+        <CardDescription className="text-md font-semibold text-muted-primary">{props.title}</CardDescription>
+        <CardTitle className="text-4xl font-semibold tabular-nums">
+          {props.value}
+        </CardTitle>
+        <CardAction className={`bg-green-100 text-green-500 rounded-md p-1`}>
+          {props.icon}
+        </CardAction>
+      </CardHeader>
+      <CardFooter className="flex-col w-full items-start gap-1.5 text-xs">
+        <div className="line-clamp-1 flex flex-row gap-2 font-medium text-muted-foreground items-center">
+          <span className="bg-green-100 text-green-500 rounded-sm flex flex-row items-center gap-1 px-2 dark:bg-green-500 dark:text-green-50">{props.trendIcon}{props.increment}% </span>
+          vs last month
+        </div>
+      </CardFooter>
+    </Card>
   )
 }

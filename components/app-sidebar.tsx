@@ -14,10 +14,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { LayoutDashboardIcon, Settings2Icon, CalendarRange, CircleHelpIcon, FileChartColumnIcon, Map, GraduationCap, UserStarIcon, Earth, BarChart3, Rss, TrendingUpIcon, ClockFadingIcon, BookTemplate, BotMessageSquare, MessageSquareTextIcon, RepeatIcon, Handshake } from "lucide-react"
+import { LayoutDashboardIcon, CircleHelpIcon, FileChartColumnIcon, GraduationCap, UserStarIcon, BarChart3,Handshake, Building2Icon, ToolCase, MessageSquareTextIcon, Settings } from "lucide-react"
 
 import { getCurrentUserAction } from "@/app/actions/user-action"
-import { UserButton } from "@neondatabase/auth/react/ui";
 
 export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
@@ -39,27 +38,31 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
       ),
     },
     {
-      title: "Partners",
-      url: "/partners",
-      icon: (
-        <Handshake
-        />
-      ),
-    },
-       {
       title: "Projects",
       url: "/projects",
       icon: (
-        <FileChartColumnIcon
-        />
+        <FileChartColumnIcon/>
+      ),
+    },
+    {
+      title: "Users",
+      url: "/users",
+      icon: (
+        <UserStarIcon/>
+      ),
+    },
+       {
+      title: "Partners",
+      url: "/partners",
+      icon: (
+        <Handshake/>
       ),
     },
       {
-        title: "Updates",
-        url: "/updates",
+        title: "Departments",
+        url: "/departments",
         icon: (
-          <RepeatIcon
-          />
+          <Building2Icon/>
       ),
     },
       {
@@ -71,89 +74,38 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
       ),
     },
       {
-      title: "Countries",
-      url: "/countries",
+      title: "Assets",
+      url: "/assets",
       icon: (
-        <Earth
-        />
+        <ToolCase/>
       ),
     },
           {
-      title: "Champions & Users",
-      url: "/champions",
+      title: "Communications",
+      url: "/communications",
       icon: (
-        <UserStarIcon
-        />
+        <MessageSquareTextIcon/>
       ),
     },
           {
-      title: "Learning Hub",
+      title: "Knowledge Base",
       url: "#",
       icon: (
-        <GraduationCap
-        />
-      ),
-    },
-              {
-      title: "Messages",
-      url: "#",
-      icon: (
-        <MessageSquareTextIcon
-        />
-      ),
-    },
-              {
-      title: "WhatsApp Automation",
-      url: "#",
-      icon: (
-        <BotMessageSquare
-        />
-      ),
-    },
-              {
-      title: "Message Templates",
-      url: "#",
-      icon: (
-        <BookTemplate
-        />
-      ),
-    },
-                  {
-      title: "Activity Feeds",
-      url: "#",
-      icon: (
-        <Rss
-        />
-      ),
-    },
-                  {
-      title: "Delayed Response",
-      url: "#",
-      icon: (
-        <ClockFadingIcon
-        />
-      ),
-    },
-                  {
-      title: "Response Tracker",
-      url: "#",
-      icon: (
-        <TrendingUpIcon
-        />
+        <GraduationCap/>
       ),
     },
   ],
   navSecondary: [
     {
       title: "Settings",
-      url: "/setting",
+      url: "/settings",
       icon: (
-        <Settings2Icon
+        <Settings
         />
       ),
     },
     {
-      title: "Get Help",
+      title: "Support",
       url: "#",
       icon: (
         <CircleHelpIcon
@@ -180,7 +132,7 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} role={user.role} />
-        {/* <NavSecondary items={data.navSecondary} className="mt-auto cursor-pointer" /> */}
+        <NavSecondary items={data.navSecondary} className="mt-auto cursor-pointer" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
