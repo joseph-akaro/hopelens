@@ -165,7 +165,7 @@ export function ChartAreaInteractive() {
   })
 
   return (
-    <Card className="@container/card">
+    <Card className="@container/card flex-1">
       <CardHeader>
         <CardTitle>Total Updates</CardTitle>
         <CardDescription>
